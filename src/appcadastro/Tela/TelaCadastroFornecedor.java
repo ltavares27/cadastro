@@ -36,7 +36,7 @@ public class TelaCadastroFornecedor extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         textEndereco = new java.awt.TextField();
         jRadioRecorrente = new javax.swing.JRadioButton();
-        jButtonSalvar = new javax.swing.JButton();
+        jButtonSalvarFornecedor = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Tela de Cadastro de Fornecedor");
@@ -46,7 +46,7 @@ public class TelaCadastroFornecedor extends javax.swing.JFrame {
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fornecedor1.png"))); // NOI18N
         jLabel2.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Cadastro Fornecedor", 0, 0, new java.awt.Font("Arial", 0, 12))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Cadastro Fornecedor", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 12))); // NOI18N
 
         jLabel3.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel3.setText("Razão Social");
@@ -66,7 +66,7 @@ public class TelaCadastroFornecedor extends javax.swing.JFrame {
         jRadioRecorrente.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jRadioRecorrente.setText("Recorrente");
 
-        jButtonSalvar.setText("Salvar");
+        jButtonSalvarFornecedor.setText("Salvar");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -76,7 +76,7 @@ public class TelaCadastroFornecedor extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(252, 252, 252)
-                        .addComponent(jButtonSalvar))
+                        .addComponent(jButtonSalvarFornecedor))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel3))
@@ -117,7 +117,7 @@ public class TelaCadastroFornecedor extends javax.swing.JFrame {
                 .addGap(20, 20, 20)
                 .addComponent(jRadioRecorrente)
                 .addGap(67, 67, 67)
-                .addComponent(jButtonSalvar)
+                .addComponent(jButtonSalvarFornecedor)
                 .addContainerGap(34, Short.MAX_VALUE))
         );
 
@@ -186,7 +186,7 @@ public class TelaCadastroFornecedor extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonSalvar;
+    private javax.swing.JButton jButtonSalvarFornecedor;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
