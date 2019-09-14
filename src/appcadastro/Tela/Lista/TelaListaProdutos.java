@@ -41,6 +41,7 @@ public class TelaListaProdutos extends javax.swing.JFrame {
         jListProdutos = new javax.swing.JList();
         jButtonExcluirProduto = new javax.swing.JButton();
         jButtonDetalhesProduto = new javax.swing.JButton();
+        jButtonDetalhesProduto1 = new javax.swing.JButton();
 
         jMenu1.setText("jMenu1");
 
@@ -71,11 +72,14 @@ public class TelaListaProdutos extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(jListProdutos);
 
-        jButtonExcluirProduto.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jButtonExcluirProduto.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jButtonExcluirProduto.setText("Exluir");
 
-        jButtonDetalhesProduto.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jButtonDetalhesProduto.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jButtonDetalhesProduto.setText("Detalhes");
+
+        jButtonDetalhesProduto1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jButtonDetalhesProduto1.setText("Editar");
 
         javax.swing.GroupLayout CPFLayout = new javax.swing.GroupLayout(CPF);
         CPF.setLayout(CPFLayout);
@@ -86,21 +90,23 @@ public class TelaListaProdutos extends javax.swing.JFrame {
                 .addGroup(CPFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 593, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(CPFLayout.createSequentialGroup()
+                        .addComponent(jButtonDetalhesProduto1, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButtonDetalhesProduto)
-                        .addGap(18, 18, 18)
+                        .addGap(14, 14, 14)
                         .addComponent(jButtonExcluirProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
         CPFLayout.setVerticalGroup(
             CPFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(CPFLayout.createSequentialGroup()
-                .addGap(5, 5, 5)
                 .addGroup(CPFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonExcluirProduto)
-                    .addComponent(jButtonDetalhesProduto))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jButtonDetalhesProduto)
+                    .addComponent(jButtonDetalhesProduto1))
+                .addGap(11, 11, 11)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(318, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -231,6 +237,7 @@ public class TelaListaProdutos extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel CPF;
     private javax.swing.JButton jButtonDetalhesProduto;
+    private javax.swing.JButton jButtonDetalhesProduto1;
     private javax.swing.JButton jButtonExcluirProduto;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JLabel jLabel1;

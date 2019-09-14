@@ -39,8 +39,9 @@ public class TelaListaCliente extends javax.swing.JFrame {
         CPF = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jListClientes = new javax.swing.JList();
-        jButtonExcluirCliente = new javax.swing.JButton();
+        jButtonEditarCliente = new javax.swing.JButton();
         jButtonDetalhesCliente = new javax.swing.JButton();
+        jButtonExcluirCliente1 = new javax.swing.JButton();
 
         jMenu1.setText("jMenu1");
 
@@ -57,7 +58,7 @@ public class TelaListaCliente extends javax.swing.JFrame {
         setTitle("Tela de Clientes");
         setResizable(false);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cliente1.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cliente.png"))); // NOI18N
 
         CPF.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Clientes", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 12))); // NOI18N
         CPF.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
@@ -70,11 +71,14 @@ public class TelaListaCliente extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(jListClientes);
 
-        jButtonExcluirCliente.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jButtonExcluirCliente.setText("Exluir");
+        jButtonEditarCliente.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jButtonEditarCliente.setText("Editar");
 
-        jButtonDetalhesCliente.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jButtonDetalhesCliente.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jButtonDetalhesCliente.setText("Detalhes");
+
+        jButtonExcluirCliente1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jButtonExcluirCliente1.setText("Exluir");
 
         javax.swing.GroupLayout CPFLayout = new javax.swing.GroupLayout(CPF);
         CPF.setLayout(CPFLayout);
@@ -85,21 +89,24 @@ public class TelaListaCliente extends javax.swing.JFrame {
                 .addGroup(CPFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 593, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(CPFLayout.createSequentialGroup()
+                        .addComponent(jButtonEditarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButtonDetalhesCliente)
                         .addGap(18, 18, 18)
-                        .addComponent(jButtonExcluirCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jButtonExcluirCliente1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
         CPFLayout.setVerticalGroup(
             CPFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(CPFLayout.createSequentialGroup()
                 .addGap(5, 5, 5)
-                .addGroup(CPFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonExcluirCliente)
-                    .addComponent(jButtonDetalhesCliente))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(CPFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButtonEditarCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE)
+                    .addComponent(jButtonDetalhesCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonExcluirCliente1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(312, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -198,7 +205,8 @@ public class TelaListaCliente extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel CPF;
     private javax.swing.JButton jButtonDetalhesCliente;
-    private javax.swing.JButton jButtonExcluirCliente;
+    private javax.swing.JButton jButtonEditarCliente;
+    private javax.swing.JButton jButtonExcluirCliente1;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JList jListClientes;

@@ -43,7 +43,7 @@ public class TelaCadastroFornecedor extends javax.swing.JFrame {
         setResizable(false);
 
         jLabel2.setBackground(new java.awt.Color(140, 140, 140));
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fornecedor1.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fornecedor.png"))); // NOI18N
         jLabel2.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Cadastro Fornecedor", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 12))); // NOI18N

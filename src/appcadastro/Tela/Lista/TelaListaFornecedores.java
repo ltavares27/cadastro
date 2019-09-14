@@ -40,7 +40,8 @@ public class TelaListaFornecedores extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jListFornecedores = new javax.swing.JList();
         jButtonExcluirFornecedor = new javax.swing.JButton();
-        jButtonDetalhesFornecedor = new javax.swing.JButton();
+        jButtonEditarFornecedor = new javax.swing.JButton();
+        jButtonDetalhesFornecedor1 = new javax.swing.JButton();
 
         jMenu1.setText("jMenu1");
 
@@ -57,7 +58,7 @@ public class TelaListaFornecedores extends javax.swing.JFrame {
         setTitle("Tela de Fornecedores");
         setResizable(false);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fornecedor1.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fornecedor.png"))); // NOI18N
 
         CPF.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Fornecedores", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 12))); // NOI18N
         CPF.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
@@ -70,11 +71,19 @@ public class TelaListaFornecedores extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(jListFornecedores);
 
-        jButtonExcluirFornecedor.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jButtonExcluirFornecedor.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jButtonExcluirFornecedor.setText("Exluir");
+        jButtonExcluirFornecedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonExcluirFornecedorActionPerformed(evt);
+            }
+        });
 
-        jButtonDetalhesFornecedor.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jButtonDetalhesFornecedor.setText("Detalhes");
+        jButtonEditarFornecedor.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jButtonEditarFornecedor.setText("Editar");
+
+        jButtonDetalhesFornecedor1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jButtonDetalhesFornecedor1.setText("Detalhes");
 
         javax.swing.GroupLayout CPFLayout = new javax.swing.GroupLayout(CPF);
         CPF.setLayout(CPFLayout);
@@ -85,8 +94,10 @@ public class TelaListaFornecedores extends javax.swing.JFrame {
                 .addGroup(CPFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 593, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(CPFLayout.createSequentialGroup()
-                        .addComponent(jButtonDetalhesFornecedor)
-                        .addGap(18, 18, 18)
+                        .addComponent(jButtonEditarFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButtonDetalhesFornecedor1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButtonExcluirFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
@@ -96,10 +107,11 @@ public class TelaListaFornecedores extends javax.swing.JFrame {
                 .addGap(5, 5, 5)
                 .addGroup(CPFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonExcluirFornecedor)
-                    .addComponent(jButtonDetalhesFornecedor))
+                    .addComponent(jButtonEditarFornecedor)
+                    .addComponent(jButtonDetalhesFornecedor1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(340, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -115,12 +127,9 @@ public class TelaListaFornecedores extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(CPF, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(0, 352, Short.MAX_VALUE)))
-                .addContainerGap())
+                .addComponent(jLabel1)
+                .addContainerGap(363, Short.MAX_VALUE))
+            .addComponent(CPF, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         getAccessibleContext().setAccessibleName("Tele de Cadastro de Cliente");
@@ -128,6 +137,10 @@ public class TelaListaFornecedores extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonExcluirFornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExcluirFornecedorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonExcluirFornecedorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -229,7 +242,8 @@ public class TelaListaFornecedores extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel CPF;
-    private javax.swing.JButton jButtonDetalhesFornecedor;
+    private javax.swing.JButton jButtonDetalhesFornecedor1;
+    private javax.swing.JButton jButtonEditarFornecedor;
     private javax.swing.JButton jButtonExcluirFornecedor;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JLabel jLabel1;

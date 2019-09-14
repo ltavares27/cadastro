@@ -50,7 +50,7 @@
           <Color blue="8c" green="8c" red="8c" type="rgb"/>
         </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/img/fornecedor1.png"/>
+          <Image iconType="3" name="/img/fornecedor.png"/>
         </Property>
         <Property name="verticalAlignment" type="int" value="1"/>
       </Properties>

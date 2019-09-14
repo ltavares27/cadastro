@@ -41,6 +41,7 @@ public class TelaListaFuncionarios extends javax.swing.JFrame {
         jListFuncionarios = new javax.swing.JList();
         jButtonExcluirFuncionario = new javax.swing.JButton();
         jButtonDetalhesFuncionario = new javax.swing.JButton();
+        jButtonEditarFuncionario1 = new javax.swing.JButton();
 
         jMenu1.setText("jMenu1");
 
@@ -70,11 +71,19 @@ public class TelaListaFuncionarios extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(jListFuncionarios);
 
-        jButtonExcluirFuncionario.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jButtonExcluirFuncionario.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jButtonExcluirFuncionario.setText("Exluir");
 
-        jButtonDetalhesFuncionario.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jButtonDetalhesFuncionario.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jButtonDetalhesFuncionario.setText("Detalhes");
+
+        jButtonEditarFuncionario1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jButtonEditarFuncionario1.setText("Editar");
+        jButtonEditarFuncionario1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEditarFuncionario1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout CPFLayout = new javax.swing.GroupLayout(CPF);
         CPF.setLayout(CPFLayout);
@@ -85,21 +94,23 @@ public class TelaListaFuncionarios extends javax.swing.JFrame {
                 .addGroup(CPFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 593, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(CPFLayout.createSequentialGroup()
-                        .addComponent(jButtonDetalhesFuncionario)
+                        .addComponent(jButtonEditarFuncionario1, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonDetalhesFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButtonExcluirFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jButtonExcluirFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
         CPFLayout.setVerticalGroup(
             CPFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(CPFLayout.createSequentialGroup()
-                .addGap(5, 5, 5)
                 .addGroup(CPFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonExcluirFuncionario)
-                    .addComponent(jButtonDetalhesFuncionario))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jButtonDetalhesFuncionario)
+                    .addComponent(jButtonEditarFuncionario1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(11, 11, 11)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(289, 289, 289))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -119,8 +130,7 @@ public class TelaListaFuncionarios extends javax.swing.JFrame {
                     .addComponent(CPF, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
-                        .addGap(0, 352, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         getAccessibleContext().setAccessibleName("Tele de Cadastro de Cliente");
@@ -128,6 +138,10 @@ public class TelaListaFuncionarios extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonEditarFuncionario1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditarFuncionario1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonEditarFuncionario1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -230,6 +244,7 @@ public class TelaListaFuncionarios extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel CPF;
     private javax.swing.JButton jButtonDetalhesFuncionario;
+    private javax.swing.JButton jButtonEditarFuncionario1;
     private javax.swing.JButton jButtonExcluirFuncionario;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JLabel jLabel1;
