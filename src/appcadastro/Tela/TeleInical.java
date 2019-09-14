@@ -5,6 +5,19 @@
  */
 package appcadastro.Tela;
 
+import appcadastro.Tela.Detalhes.TelaDetalheCliente;
+import appcadastro.Tela.Detalhes.TelaDetalheFornecedor;
+import appcadastro.Tela.Detalhes.TelaDetalheFuncionario;
+import appcadastro.Tela.Detalhes.TelaDetalheProduto;
+import appcadastro.Tela.Lista.TelaListaCliente;
+import appcadastro.Tela.Lista.TelaListaFornecedores;
+import appcadastro.Tela.Lista.TelaListaFuncionarios;
+import appcadastro.Tela.Lista.TelaListaProdutos;
+import appcadastro.Tela.cadastar.TelaCadastroCliente;
+import appcadastro.Tela.cadastar.TelaCadastroFornecedor;
+import appcadastro.Tela.cadastar.TelaCadastroFuncionario;
+import appcadastro.Tela.cadastar.TelaCadastroProduto;
+
 /**
  *
  * @author ltavares
@@ -35,10 +48,14 @@ public class TeleInical extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
+        jButtonCadastrarFornecedor = new javax.swing.JButton();
+        jButtonCadastrarProduto = new javax.swing.JButton();
+        jButtonCadastrarCliente = new javax.swing.JButton();
+        jButtonCadastrarFuncionario = new javax.swing.JButton();
+        jButtonListasProdutos = new javax.swing.JButton();
+        jButtonListaFornecedores = new javax.swing.JButton();
+        jButtonListaClientes = new javax.swing.JButton();
+        jButtonListaFuncionarios = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Tela Inicial Padaria Trem Bão");
@@ -63,41 +80,75 @@ public class TeleInical extends javax.swing.JFrame {
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/funcionario.png"))); // NOI18N
 
-        jButton5.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jButton5.setForeground(new java.awt.Color(51, 51, 255));
-        jButton5.setText("Cadastrar Fornecedor");
-        jButton5.setActionCommand("Cadastrar Fornecedor");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        jButtonCadastrarFornecedor.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jButtonCadastrarFornecedor.setForeground(new java.awt.Color(51, 51, 255));
+        jButtonCadastrarFornecedor.setText("Cadastrar Fornecedor");
+        jButtonCadastrarFornecedor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                jButtonCadastrarFornecedorActionPerformed(evt);
             }
         });
 
-        jButton6.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jButton6.setForeground(new java.awt.Color(51, 51, 255));
-        jButton6.setText("Cadastrar Produto");
-        jButton6.setActionCommand("Cadastrar Produto");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        jButtonCadastrarProduto.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jButtonCadastrarProduto.setForeground(new java.awt.Color(51, 51, 255));
+        jButtonCadastrarProduto.setText("Cadastrar Produto");
+        jButtonCadastrarProduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                jButtonCadastrarProdutoActionPerformed(evt);
             }
         });
 
-        jButton7.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jButton7.setForeground(new java.awt.Color(51, 51, 255));
-        jButton7.setText("Cadastrar Cliente");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        jButtonCadastrarCliente.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jButtonCadastrarCliente.setForeground(new java.awt.Color(51, 51, 255));
+        jButtonCadastrarCliente.setText("Cadastrar Cliente");
+        jButtonCadastrarCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                jButtonCadastrarClienteActionPerformed(evt);
             }
         });
 
-        jButton8.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jButton8.setForeground(new java.awt.Color(51, 51, 255));
-        jButton8.setText("Cadastrar Funcionário");
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
+        jButtonCadastrarFuncionario.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jButtonCadastrarFuncionario.setForeground(new java.awt.Color(51, 51, 255));
+        jButtonCadastrarFuncionario.setText("Cadastrar Funcionário");
+        jButtonCadastrarFuncionario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
+                jButtonCadastrarFuncionarioActionPerformed(evt);
+            }
+        });
+
+        jButtonListasProdutos.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jButtonListasProdutos.setForeground(new java.awt.Color(51, 51, 255));
+        jButtonListasProdutos.setText(" Produtos");
+        jButtonListasProdutos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonListasProdutosActionPerformed(evt);
+            }
+        });
+
+        jButtonListaFornecedores.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jButtonListaFornecedores.setForeground(new java.awt.Color(51, 51, 255));
+        jButtonListaFornecedores.setText(" Fornecedores");
+        jButtonListaFornecedores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonListaFornecedoresActionPerformed(evt);
+            }
+        });
+
+        jButtonListaClientes.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jButtonListaClientes.setForeground(new java.awt.Color(51, 51, 255));
+        jButtonListaClientes.setText(" Clientes");
+        jButtonListaClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonListaClientesActionPerformed(evt);
+            }
+        });
+
+        jButtonListaFuncionarios.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jButtonListaFuncionarios.setForeground(new java.awt.Color(51, 51, 255));
+        jButtonListaFuncionarios.setText(" Funcionarios");
+        jButtonListaFuncionarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonListaFuncionariosActionPerformed(evt);
             }
         });
 
@@ -112,26 +163,37 @@ public class TeleInical extends javax.swing.JFrame {
                         .addComponent(jLabel1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(19, 19, 19)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel6)
-                            .addComponent(jButton5))
-                        .addGap(23, 23, 23)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel6)
+                                    .addComponent(jButtonCadastrarFornecedor))
+                                .addGap(15, 15, 15))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(3, 3, 3)
+                                .addComponent(jButtonListaFornecedores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(19, 19, 19)))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel7)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(13, 13, 13)
-                                .addComponent(jButton6)))
-                        .addGap(50, 50, 50)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jButtonCadastrarProduto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jButtonListasProdutos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(40, 40, 40)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jLabel8)
-                            .addComponent(jButton8))
-                        .addGap(65, 65, 65)
+                            .addComponent(jButtonCadastrarFuncionario, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButtonListaFuncionarios, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(46, 46, 46)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel5)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(jButton7)))))
-                .addContainerGap(62, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jButtonListaClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jButtonCadastrarCliente))
+                                .addGap(18, 18, 18)))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -143,13 +205,19 @@ public class TeleInical extends javax.swing.JFrame {
                     .addComponent(jLabel7))
                 .addGap(28, 28, 28)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton7)
-                    .addComponent(jButton6)
-                    .addComponent(jButton5)
-                    .addComponent(jButton8))
+                    .addComponent(jButtonCadastrarCliente)
+                    .addComponent(jButtonCadastrarProduto)
+                    .addComponent(jButtonCadastrarFornecedor)
+                    .addComponent(jButtonCadastrarFuncionario))
                 .addGap(32, 32, 32)
                 .addComponent(jLabel1)
-                .addContainerGap(125, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonListasProdutos)
+                    .addComponent(jButtonListaClientes)
+                    .addComponent(jButtonListaFuncionarios)
+                    .addComponent(jButtonListaFornecedores))
+                .addContainerGap(73, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -160,8 +228,11 @@ public class TeleInical extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addGap(33, 33, 33)
                 .addComponent(jLabel3)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 859, Short.MAX_VALUE)
+                .addGap(0, 222, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -172,29 +243,44 @@ public class TeleInical extends javax.swing.JFrame {
                         .addGap(43, 43, 43)
                         .addComponent(jLabel3)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 368, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
-
-        getAccessibleContext().setAccessibleName("Tela Inicial Padaria Trem Bão");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
+    private void jButtonCadastrarFornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarFornecedorActionPerformed
+        new TelaCadastroFornecedor().setVisible(true);       
+    }//GEN-LAST:event_jButtonCadastrarFornecedorActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton6ActionPerformed
+    private void jButtonCadastrarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarProdutoActionPerformed
+        new TelaCadastroProduto().setVisible(true);
+    }//GEN-LAST:event_jButtonCadastrarProdutoActionPerformed
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton7ActionPerformed
+    private void jButtonCadastrarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarClienteActionPerformed
+        new TelaCadastroCliente().setVisible(true);
+    }//GEN-LAST:event_jButtonCadastrarClienteActionPerformed
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton8ActionPerformed
+    private void jButtonCadastrarFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarFuncionarioActionPerformed
+       new TelaCadastroFuncionario().setVisible(true);
+    }//GEN-LAST:event_jButtonCadastrarFuncionarioActionPerformed
+
+    private void jButtonListasProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListasProdutosActionPerformed
+       new TelaListaProdutos().setVisible(true);
+    }//GEN-LAST:event_jButtonListasProdutosActionPerformed
+
+    private void jButtonListaFornecedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListaFornecedoresActionPerformed
+        new TelaListaFornecedores().setVisible(true);
+    }//GEN-LAST:event_jButtonListaFornecedoresActionPerformed
+
+    private void jButtonListaClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListaClientesActionPerformed
+        new TelaListaCliente().setVisible(true);
+    }//GEN-LAST:event_jButtonListaClientesActionPerformed
+
+    private void jButtonListaFuncionariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListaFuncionariosActionPerformed
+       new TelaListaFuncionarios().setVisible(true);
+    }//GEN-LAST:event_jButtonListaFuncionariosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -232,10 +318,14 @@ public class TeleInical extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButtonCadastrarCliente;
+    private javax.swing.JButton jButtonCadastrarFornecedor;
+    private javax.swing.JButton jButtonCadastrarFuncionario;
+    private javax.swing.JButton jButtonCadastrarProduto;
+    private javax.swing.JButton jButtonListaClientes;
+    private javax.swing.JButton jButtonListaFornecedores;
+    private javax.swing.JButton jButtonListaFuncionarios;
+    private javax.swing.JButton jButtonListasProdutos;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
