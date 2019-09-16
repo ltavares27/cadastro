@@ -1,10 +1,9 @@
 package br.com.padaria.model;
-
 /**
  *
  * @author ltavares
  */
-public class Pessoa {
+public abstract class Pessoa {
     
    private String nome;
    
@@ -12,7 +11,14 @@ public class Pessoa {
    
    private String telefone;
    
-   private String endereco;  
+   private String endereco;
+   
+    public Pessoa(String nome, String cpf, String telefone, String endereco) {
+        this.nome = nome;
+        this.cpf = cpf;
+        this.telefone = telefone;
+        this.endereco = endereco;
+    }  
 
     public String getNome() {
         return nome;
@@ -45,6 +51,5 @@ public class Pessoa {
     public void setEndereco(String endereco) {
         this.endereco = endereco;
     }
-   
-   
+  
 }
