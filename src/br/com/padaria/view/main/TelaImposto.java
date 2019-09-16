@@ -42,25 +42,16 @@ public class TelaImposto extends javax.swing.JFrame {
 
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jButtonCadastrarFornecedor = new javax.swing.JButton();
-        jButtonCadastrarProduto = new javax.swing.JButton();
-        jButtonCadastrarCliente = new javax.swing.JButton();
-        jButtonCadastrarFuncionario = new javax.swing.JButton();
-        jButtonListasProdutos = new javax.swing.JButton();
-        jButtonListaFornecedores = new javax.swing.JButton();
-        jButtonListaClientes = new javax.swing.JButton();
-        jButtonListaFuncionarios = new javax.swing.JButton();
-        jLabel9 = new javax.swing.JLabel();
-        jButtonDeclararImposto = new javax.swing.JButton();
-        jLabel10 = new javax.swing.JLabel();
-        jButtonRegistrarCaixa = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        label2 = new java.awt.Label();
+        label3 = new java.awt.Label();
+        label4 = new java.awt.Label();
+        textFieldTotaVendasPorMes = new java.awt.TextField();
+        textFieldTotalSalarioBrutoPorMes = new java.awt.TextField();
+        textFieldTotalImpostoAPagar = new java.awt.TextField();
+        jLabel11 = new javax.swing.JLabel();
+        label1 = new java.awt.Label();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Tela Inicial Padaria Trem Bão");
@@ -73,210 +64,70 @@ public class TelaImposto extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(255, 102, 0));
         jLabel3.setText("Padaria'S Trem Bão");
 
-        jPanel1.setPreferredSize(new java.awt.Dimension(770, 500));
-
-        jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 102, 0));
-
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cliente1.png"))); // NOI18N
-
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/produto (1).png"))); // NOI18N
-
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fornecedor1.png"))); // NOI18N
-
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/imposto.png"))); // NOI18N
-
-        jButtonCadastrarFornecedor.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jButtonCadastrarFornecedor.setForeground(new java.awt.Color(51, 51, 255));
-        jButtonCadastrarFornecedor.setText("Cadastrar Fornecedor");
-        jButtonCadastrarFornecedor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonCadastrarFornecedorActionPerformed(evt);
-            }
-        });
-
-        jButtonCadastrarProduto.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jButtonCadastrarProduto.setForeground(new java.awt.Color(51, 51, 255));
-        jButtonCadastrarProduto.setText("Cadastrar Produto");
-        jButtonCadastrarProduto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonCadastrarProdutoActionPerformed(evt);
-            }
-        });
-
-        jButtonCadastrarCliente.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jButtonCadastrarCliente.setForeground(new java.awt.Color(51, 51, 255));
-        jButtonCadastrarCliente.setText("Cadastrar Cliente");
-        jButtonCadastrarCliente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonCadastrarClienteActionPerformed(evt);
-            }
-        });
-
-        jButtonCadastrarFuncionario.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jButtonCadastrarFuncionario.setForeground(new java.awt.Color(51, 51, 255));
-        jButtonCadastrarFuncionario.setText("Cadastrar Funcionário");
-        jButtonCadastrarFuncionario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonCadastrarFuncionarioActionPerformed(evt);
-            }
-        });
-
-        jButtonListasProdutos.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jButtonListasProdutos.setForeground(new java.awt.Color(51, 51, 255));
-        jButtonListasProdutos.setText(" Produtos");
-        jButtonListasProdutos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonListasProdutosActionPerformed(evt);
-            }
-        });
-
-        jButtonListaFornecedores.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jButtonListaFornecedores.setForeground(new java.awt.Color(51, 51, 255));
-        jButtonListaFornecedores.setText(" Fornecedores");
-        jButtonListaFornecedores.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonListaFornecedoresActionPerformed(evt);
-            }
-        });
-
-        jButtonListaClientes.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jButtonListaClientes.setForeground(new java.awt.Color(51, 51, 255));
-        jButtonListaClientes.setText(" Clientes");
-        jButtonListaClientes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonListaClientesActionPerformed(evt);
-            }
-        });
-
-        jButtonListaFuncionarios.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jButtonListaFuncionarios.setForeground(new java.awt.Color(51, 51, 255));
-        jButtonListaFuncionarios.setText(" Funcionarios");
-        jButtonListaFuncionarios.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonListaFuncionariosActionPerformed(evt);
-            }
-        });
-
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/funcionario (1).png"))); // NOI18N
-
-        jButtonDeclararImposto.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jButtonDeclararImposto.setForeground(new java.awt.Color(0, 0, 204));
-        jButtonDeclararImposto.setText("Declarar Imposto");
-        jButtonDeclararImposto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonDeclararImpostoActionPerformed(evt);
-            }
-        });
-
-        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/caixa.png"))); // NOI18N
-
-        jButtonRegistrarCaixa.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jButtonRegistrarCaixa.setForeground(new java.awt.Color(0, 0, 204));
-        jButtonRegistrarCaixa.setText("Registrar");
-        jButtonRegistrarCaixa.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonRegistrarCaixaActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(111, 111, 111)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButtonListaFornecedores, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel1)
-                        .addGap(376, 376, 376))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(43, 43, 43)
-                        .addComponent(jLabel6)
-                        .addGap(257, 257, 257)
-                        .addComponent(jLabel9))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(38, 38, 38)
-                        .addComponent(jLabel7)
-                        .addGap(265, 265, 265)
-                        .addComponent(jLabel5))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(jButtonListasProdutos, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButtonListaClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jButtonCadastrarFornecedor)
-                                .addComponent(jButtonCadastrarProduto))
-                            .addGap(156, 156, 156)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jButtonListaFuncionarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButtonCadastrarFuncionario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButtonCadastrarCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 4, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addComponent(jLabel10))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addComponent(jLabel8))
-                    .addComponent(jButtonDeclararImposto)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addComponent(jButtonRegistrarCaixa)))
-                .addGap(235, 235, 235))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel9))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonCadastrarFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonCadastrarFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(12, 12, 12)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButtonListaFornecedores, javax.swing.GroupLayout.DEFAULT_SIZE, 52, Short.MAX_VALUE)
-                            .addComponent(jButtonListaFuncionarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel5)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(64, 64, 64)
-                        .addComponent(jLabel1)))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButtonCadastrarProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButtonListasProdutos, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButtonCadastrarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButtonListaClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(32, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel10)
-                .addGap(18, 18, 18)
-                .addComponent(jButtonRegistrarCaixa, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(72, 72, 72)
-                .addComponent(jLabel8)
-                .addGap(18, 18, 18)
-                .addComponent(jButtonDeclararImposto, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(55, 55, 55))
-        );
-
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/pao.png"))); // NOI18N
+
+        label2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        label2.setText("Total de Vendas Por Mês R$:");
+
+        label3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        label3.setText("Total de Salario Bruto Pago R$: ");
+
+        label4.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        label4.setText("Total de imposto á pagar R$: ");
+
+        textFieldTotaVendasPorMes.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+
+        textFieldTotalSalarioBrutoPorMes.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+
+        textFieldTotalImpostoAPagar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(37, 37, 37)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(label4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(textFieldTotalImpostoAPagar, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(label3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(textFieldTotalSalarioBrutoPorMes, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(textFieldTotaVendasPorMes, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(textFieldTotaVendasPorMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(28, 28, 28)))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(textFieldTotalSalarioBrutoPorMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(label3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(117, 117, 117)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(label4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(textFieldTotalImpostoAPagar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(185, Short.MAX_VALUE))
+        );
+
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/imposto (1).png"))); // NOI18N
+
+        label1.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+        label1.setForeground(new java.awt.Color(0, 0, 153));
+        label1.setText("Declaração de Renda");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -284,70 +135,42 @@ public class TelaImposto extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jLabel2)
-                .addGap(108, 108, 108)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 154, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(98, 98, 98))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(219, 219, 219)))
                 .addComponent(jLabel4))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1014, Short.MAX_VALUE)
-                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jLabel11)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(52, 52, 52)
-                        .addComponent(jLabel3)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 427, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(27, Short.MAX_VALUE))
+                        .addGap(50, 50, 50)
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(19, 19, 19)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel11)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButtonCadastrarFornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarFornecedorActionPerformed
-        new TelaCadastroFornecedor().setVisible(true);       
-    }//GEN-LAST:event_jButtonCadastrarFornecedorActionPerformed
-
-    private void jButtonCadastrarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarProdutoActionPerformed
-        new TelaCadastroProduto().setVisible(true);
-    }//GEN-LAST:event_jButtonCadastrarProdutoActionPerformed
-
-    private void jButtonCadastrarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarClienteActionPerformed
-        new TelaCadastroCliente().setVisible(true);
-    }//GEN-LAST:event_jButtonCadastrarClienteActionPerformed
-
-    private void jButtonCadastrarFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarFuncionarioActionPerformed
-       new TelaCadastroFuncionario().setVisible(true);
-    }//GEN-LAST:event_jButtonCadastrarFuncionarioActionPerformed
-
-    private void jButtonListasProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListasProdutosActionPerformed
-       new TelaListaProdutos().setVisible(true);
-    }//GEN-LAST:event_jButtonListasProdutosActionPerformed
-
-    private void jButtonListaFornecedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListaFornecedoresActionPerformed
-        new TelaListaFornecedores().setVisible(true);
-    }//GEN-LAST:event_jButtonListaFornecedoresActionPerformed
-
-    private void jButtonListaClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListaClientesActionPerformed
-        new TelaListaCliente().setVisible(true);
-    }//GEN-LAST:event_jButtonListaClientesActionPerformed
-
-    private void jButtonListaFuncionariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListaFuncionariosActionPerformed
-       new TelaListaFuncionarios().setVisible(true);
-    }//GEN-LAST:event_jButtonListaFuncionariosActionPerformed
-
-    private void jButtonDeclararImpostoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeclararImpostoActionPerformed
-        new TelaImposto().setVisible(true);
-    }//GEN-LAST:event_jButtonDeclararImpostoActionPerformed
-
-    private void jButtonRegistrarCaixaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistrarCaixaActionPerformed
-      new TelaCaixaRegistradora().setVisible(true);
-    }//GEN-LAST:event_jButtonRegistrarCaixaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -388,26 +211,17 @@ public class TelaImposto extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonCadastrarCliente;
-    private javax.swing.JButton jButtonCadastrarFornecedor;
-    private javax.swing.JButton jButtonCadastrarFuncionario;
-    private javax.swing.JButton jButtonCadastrarProduto;
-    private javax.swing.JButton jButtonDeclararImposto;
-    private javax.swing.JButton jButtonListaClientes;
-    private javax.swing.JButton jButtonListaFornecedores;
-    private javax.swing.JButton jButtonListaFuncionarios;
-    private javax.swing.JButton jButtonListasProdutos;
-    private javax.swing.JButton jButtonRegistrarCaixa;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private java.awt.Label label1;
+    private java.awt.Label label2;
+    private java.awt.Label label3;
+    private java.awt.Label label4;
+    private java.awt.TextField textFieldTotaVendasPorMes;
+    private java.awt.TextField textFieldTotalImpostoAPagar;
+    private java.awt.TextField textFieldTotalSalarioBrutoPorMes;
     // End of variables declaration//GEN-END:variables
 }
