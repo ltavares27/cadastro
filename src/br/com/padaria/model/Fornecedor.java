@@ -46,9 +46,4 @@ public class Fornecedor {
     public void setRecorrente(boolean recorrente) {
         this.recorrente = recorrente;
     }
-    
-    
-    
-    
-    
 }

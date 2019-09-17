@@ -6,14 +6,13 @@ import br.com.padaria.domain.TipoCartaoFidelidade;
  *
  * @author ltavares
  */
-public class Cliente extends Pessoa{
+public class Cliente extends Pessoa {
 
-    public Cliente(String nome, String cpf, String telefone, String endereco, TipoCartaoFidelidade tipoCartaoFidelidade) {
-        super(nome, cpf, telefone, endereco);
-        this.tipoCartaoFidelidade = tipoCartaoFidelidade;
-    }
-    
     private TipoCartaoFidelidade tipoCartaoFidelidade;
+
+    public Cliente(String nome, String cpf, String telefone, String endereco) {
+        super(nome, cpf, telefone, endereco);
+    }
 
     public TipoCartaoFidelidade getTipoCartaoFidelidade() {
         return tipoCartaoFidelidade;
