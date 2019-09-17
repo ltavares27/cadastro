@@ -91,8 +91,4 @@ public class Produto {
     public void setDataValidade(Date dataValidade) {
         this.dataValidade = dataValidade;
     }
-    
-    
-    
-    
 }
