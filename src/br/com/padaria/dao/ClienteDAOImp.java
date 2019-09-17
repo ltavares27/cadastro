@@ -6,8 +6,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -20,9 +18,7 @@ public class ClienteDAOImp implements IBaseDAO<Cliente> {
     public ClienteDAOImp() {
         con = ConnectionFactory.getConnetion();
     }
-    
-    
-
+  
     @Override
     public Cliente save(Cliente cliente) {
         String sql = "INSERT INTO cliente (nome, cpf, telefone, endereco, tipoCartaoFidelidade) VALUES (?, ?, ?, ?, ?)";
