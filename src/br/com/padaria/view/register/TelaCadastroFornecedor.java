@@ -5,6 +5,10 @@
  */
 package br.com.padaria.view.register;
 
+import br.com.padaria.model.Fornecedor;
+import br.com.padaria.view.main.TelaInical;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author ltavares
@@ -67,6 +71,11 @@ public class TelaCadastroFornecedor extends javax.swing.JFrame {
         jRadioRecorrente.setText("Recorrente");
 
         jButtonSalvarFornecedor.setText("Salvar");
+        jButtonSalvarFornecedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSalvarFornecedorActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -149,6 +158,14 @@ public class TelaCadastroFornecedor extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_textcnpjActionPerformed
 
+    private void jButtonSalvarFornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarFornecedorActionPerformed
+        if(!validaPreenchimentoFormularioFornecedor()){
+            preencheFornecedor();
+            JOptionPane.showMessageDialog(null,"Fornecedor Cadastro com sucesso!");
+        }
+        
+    }//GEN-LAST:event_jButtonSalvarFornecedorActionPerformed
+
     /**
     jPanel1and line arguments
      */
@@ -182,6 +199,38 @@ public class TelaCadastroFornecedor extends javax.swing.JFrame {
                 new TelaCadastroFornecedor().setVisible(true);
             }
         });
+    }
+    
+    public Fornecedor preencheFornecedor(){
+      Fornecedor fornecedor = new Fornecedor();
+      
+      fornecedor.setCnpj(textcnpj.getText());
+      fornecedor.setEndereco(textEndereco.getText());
+      fornecedor.setRazaoSocial(textRazaoSocial.getText());
+      if (jRadioRecorrente.getText().isEmpty()){
+         fornecedor.setRecorrente(false);
+      }else {
+         fornecedor.setRecorrente(true); 
+      }
+
+      
+      return fornecedor;
+    }
+    
+    public boolean validaPreenchimentoFormularioFornecedor(){
+       if(textRazaoSocial.getText().isEmpty()) {
+           JOptionPane.showMessageDialog(null,"Informe o nome/Razao Social do Fornecedor");
+           return true;
+       }
+       if(textcnpj.getText().isEmpty()) {
+          JOptionPane.showMessageDialog(null,"Informe o CNPJ do Fornecedor ");
+          return true;
+       } 
+       if(textEndereco.getText().isEmpty()) {
+          JOptionPane.showMessageDialog(null,"Informe o endereço do Fornecedor ");
+          return true;
+       }        
+       return false;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
