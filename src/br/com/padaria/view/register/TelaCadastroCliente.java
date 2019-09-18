@@ -5,6 +5,10 @@
  */
 package br.com.padaria.view.register;
 
+import br.com.padaria.dao.ClienteDAOImp;
+import br.com.padaria.domain.TipoCartaoFidelidade;
+import br.com.padaria.model.Cliente;
+
 /**
  *
  * @author luisp
@@ -31,13 +35,13 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
         CPF = new javax.swing.JPanel();
         jLabelNomeCliente = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextPane1 = new javax.swing.JTextPane();
+        inputNome = new javax.swing.JTextPane();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        inputEndereco = new javax.swing.JTextField();
         jLabelCpfCliente = new javax.swing.JLabel();
-        jTextFieldCpfCliente = new javax.swing.JTextField();
+        inputCpf = new javax.swing.JTextField();
         jLabelTelefoneCliente = new javax.swing.JLabel();
-        jTextFieldTelefoneCliente = new javax.swing.JTextField();
+        inputTelefone = new javax.swing.JTextField();
         jButtonSalvarCliente = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -52,23 +56,28 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
         jLabelNomeCliente.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabelNomeCliente.setText("Nome");
 
-        jScrollPane1.setViewportView(jTextPane1);
+        jScrollPane1.setViewportView(inputNome);
 
         jLabel2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel2.setText("Endereço");
 
-        jTextField1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        inputEndereco.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
 
         jLabelCpfCliente.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabelCpfCliente.setText("CPF");
 
-        jTextFieldCpfCliente.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        inputCpf.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
 
         jLabelTelefoneCliente.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabelTelefoneCliente.setText("Telefone");
 
         jButtonSalvarCliente.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jButtonSalvarCliente.setText("Salvar");
+        jButtonSalvarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSalvarClienteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout CPFLayout = new javax.swing.GroupLayout(CPF);
         CPF.setLayout(CPFLayout);
@@ -82,11 +91,11 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
                             .addComponent(jLabelNomeCliente)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 590, Short.MAX_VALUE)
                             .addComponent(jLabel2)
-                            .addComponent(jTextField1)
+                            .addComponent(inputEndereco)
                             .addComponent(jLabelCpfCliente)
-                            .addComponent(jTextFieldCpfCliente)
+                            .addComponent(inputCpf)
                             .addComponent(jLabelTelefoneCliente)
-                            .addComponent(jTextFieldTelefoneCliente)))
+                            .addComponent(inputTelefone)))
                     .addGroup(CPFLayout.createSequentialGroup()
                         .addGap(251, 251, 251)
                         .addComponent(jButtonSalvarCliente)))
@@ -102,15 +111,15 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(inputEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabelCpfCliente)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextFieldCpfCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(inputCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabelTelefoneCliente)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextFieldTelefoneCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(inputTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(96, 96, 96)
                 .addComponent(jButtonSalvarCliente)
                 .addContainerGap(181, Short.MAX_VALUE))
@@ -139,6 +148,18 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonSalvarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarClienteActionPerformed
+        // TODO add your handling code here:
+        if(!inputNome.getText().isEmpty() && !inputCpf.getText().isEmpty() 
+                && !inputTelefone.getText().isEmpty() && !inputEndereco.getText().isEmpty()) {
+            Cliente cliente = new Cliente(TipoCartaoFidelidade.GOLD, inputNome.getText(), 
+                    inputCpf.getText(), inputTelefone.getText(), inputEndereco.getText());
+            cliente.setId(2);
+            ClienteDAOImp clienteDAOImp = new ClienteDAOImp();
+            clienteDAOImp.save(cliente);
+        }
+    }//GEN-LAST:event_jButtonSalvarClienteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -178,6 +199,10 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel CPF;
+    private javax.swing.JTextField inputCpf;
+    private javax.swing.JTextField inputEndereco;
+    private javax.swing.JTextPane inputNome;
+    private javax.swing.JTextField inputTelefone;
     private javax.swing.JButton jButtonSalvarCliente;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -185,9 +210,5 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelNomeCliente;
     private javax.swing.JLabel jLabelTelefoneCliente;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextFieldCpfCliente;
-    private javax.swing.JTextField jTextFieldTelefoneCliente;
-    private javax.swing.JTextPane jTextPane1;
     // End of variables declaration//GEN-END:variables
 }

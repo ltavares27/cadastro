@@ -21,15 +21,16 @@ public class ClienteDAOImp implements IBaseDAO<Cliente> {
   
     @Override
     public Cliente save(Cliente cliente) {
-        String sql = "INSERT INTO cliente (nome, cpf, telefone, endereco, tipoCartaoFidelidade) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO cliente (id, nome, cpf, telefone, endereco, tipoCartaoFidelidade) VALUES (?, ?, ?, ?, ?, ?)";
         PreparedStatement stmt = null;        
         try {
             stmt = con.prepareStatement(sql);
-            stmt.setString(1, cliente.getNome());
-            stmt.setString(2, cliente.getCpf());
-            stmt.setString(3, cliente.getTelefone());
-            stmt.setString(4, cliente.getEndereco());
-            stmt.setInt(5, cliente.getTipoCartaoFidelidade().getId());
+            stmt.setInt(1, cliente.getId());
+            stmt.setString(2, cliente.getNome());
+            stmt.setString(3, cliente.getCpf());
+            stmt.setString(4, cliente.getTelefone());
+            stmt.setString(5, cliente.getEndereco());
+            stmt.setInt(6, cliente.getTipoCartaoFidelidade().getId());
             stmt.executeUpdate();            
         } catch (SQLException ex) {
             System.err.println("Erro ao tentar gravar dados no banco"+ ex);

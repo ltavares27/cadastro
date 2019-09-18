@@ -82,11 +82,11 @@
                               <Component id="jLabelNomeCliente" min="-2" max="-2" attributes="0"/>
                               <Component id="jScrollPane1" pref="590" max="32767" attributes="0"/>
                               <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField1" alignment="0" max="32767" attributes="0"/>
+                              <Component id="inputEndereco" alignment="0" max="32767" attributes="0"/>
                               <Component id="jLabelCpfCliente" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextFieldCpfCliente" alignment="0" max="32767" attributes="0"/>
+                              <Component id="inputCpf" alignment="0" max="32767" attributes="0"/>
                               <Component id="jLabelTelefoneCliente" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextFieldTelefoneCliente" alignment="0" max="32767" attributes="0"/>
+                              <Component id="inputTelefone" alignment="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
@@ -108,15 +108,15 @@
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jTextField1" min="-2" max="-2" attributes="0"/>
+                  <Component id="inputEndereco" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="jLabelCpfCliente" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jTextFieldCpfCliente" min="-2" max="-2" attributes="0"/>
+                  <Component id="inputCpf" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="jLabelTelefoneCliente" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jTextFieldTelefoneCliente" min="-2" max="-2" attributes="0"/>
+                  <Component id="inputTelefone" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="96" max="-2" attributes="0"/>
                   <Component id="jButtonSalvarCliente" min="-2" max="-2" attributes="0"/>
                   <EmptySpace pref="181" max="32767" attributes="0"/>
@@ -140,7 +140,7 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JTextPane" name="jTextPane1">
+            <Component class="javax.swing.JTextPane" name="inputNome">
             </Component>
           </SubComponents>
         </Container>
@@ -152,7 +152,7 @@
             <Property name="text" type="java.lang.String" value="Endere&#xe7;o"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField1">
+        <Component class="javax.swing.JTextField" name="inputEndereco">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Arial" size="12" style="0"/>
@@ -167,7 +167,7 @@
             <Property name="text" type="java.lang.String" value="CPF"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextFieldCpfCliente">
+        <Component class="javax.swing.JTextField" name="inputCpf">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Arial" size="12" style="0"/>
@@ -182,7 +182,7 @@
             <Property name="text" type="java.lang.String" value="Telefone"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextFieldTelefoneCliente">
+        <Component class="javax.swing.JTextField" name="inputTelefone">
         </Component>
         <Component class="javax.swing.JButton" name="jButtonSalvarCliente">
           <Properties>
@@ -191,6 +191,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Salvar"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonSalvarClienteActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

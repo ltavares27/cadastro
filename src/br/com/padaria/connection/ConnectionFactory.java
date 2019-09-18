@@ -14,9 +14,14 @@ import java.sql.SQLException;
 public class ConnectionFactory {
     
     private static final String DRIVER = "org.h2.Driver";
-    private static final String URL = "jdbc:h2:~/padaria";
+    private static final String URL = "jdbc:h2:~/padaria.mv";
     private static final String USER = "padaria";
     private static final String PASSWORD = "p@d@ri@";
+
+//    private static final String DRIVER = "org.mysql.jdbc.Driver";
+//    private static final String URL = "jdbc:mysql://localhost:3306/padaria";
+//    private static final String USER = "root";
+//    private static final String PASSWORD = "root";
     
     public static Connection getConnetion() {
         try {

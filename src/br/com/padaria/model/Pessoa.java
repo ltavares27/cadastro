@@ -12,14 +12,17 @@ public abstract class Pessoa extends BaseEntity{
    private String telefone;
    
    private String endereco;
-   
+
+    public Pessoa() {
+    }
+
     public Pessoa(String nome, String cpf, String telefone, String endereco) {
         this.nome = nome;
         this.cpf = cpf;
         this.telefone = telefone;
         this.endereco = endereco;
-    }  
-
+    }
+   
     public String getNome() {
         return nome;
     }
