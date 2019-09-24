@@ -10,6 +10,9 @@ public class Cliente extends Pessoa {
 
     private TipoCartaoFidelidade tipoCartaoFidelidade;
 
+    public Cliente() {
+    }
+
     public Cliente(TipoCartaoFidelidade tipoCartaoFidelidade, String nome, String cpf, String telefone, String endereco) {
         super(nome, cpf, telefone, endereco);
         this.tipoCartaoFidelidade = tipoCartaoFidelidade;

@@ -39,10 +39,10 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         inputEndereco = new javax.swing.JTextField();
         jLabelCpfCliente = new javax.swing.JLabel();
-        inputCpf = new javax.swing.JTextField();
         jLabelTelefoneCliente = new javax.swing.JLabel();
-        inputTelefone = new javax.swing.JTextField();
         jButtonSalvarCliente = new javax.swing.JButton();
+        jFormattedTextFieldCPF = new javax.swing.JFormattedTextField();
+        jFormattedTextFieldTelefone = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Tela de Cadastro de Cliente");
@@ -66,8 +66,6 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
         jLabelCpfCliente.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabelCpfCliente.setText("CPF");
 
-        inputCpf.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-
         jLabelTelefoneCliente.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabelTelefoneCliente.setText("Telefone");
 
@@ -78,6 +76,20 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
                 jButtonSalvarClienteActionPerformed(evt);
             }
         });
+
+        try {
+            jFormattedTextFieldCPF.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        jFormattedTextFieldCPF.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+
+        try {
+            jFormattedTextFieldTelefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####-####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        jFormattedTextFieldTelefone.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
 
         javax.swing.GroupLayout CPFLayout = new javax.swing.GroupLayout(CPF);
         CPF.setLayout(CPFLayout);
@@ -93,12 +105,15 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
                             .addComponent(jLabel2)
                             .addComponent(inputEndereco)
                             .addComponent(jLabelCpfCliente)
-                            .addComponent(inputCpf)
-                            .addComponent(jLabelTelefoneCliente)
-                            .addComponent(inputTelefone)))
+                            .addComponent(jLabelTelefoneCliente)))
                     .addGroup(CPFLayout.createSequentialGroup()
                         .addGap(251, 251, 251)
-                        .addComponent(jButtonSalvarCliente)))
+                        .addComponent(jButtonSalvarCliente))
+                    .addGroup(CPFLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(CPFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jFormattedTextFieldTelefone, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jFormattedTextFieldCPF, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         CPFLayout.setVerticalGroup(
@@ -114,15 +129,15 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
                 .addComponent(inputEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabelCpfCliente)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(inputCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(7, 7, 7)
+                .addComponent(jFormattedTextFieldCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabelTelefoneCliente)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(inputTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jFormattedTextFieldTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(96, 96, 96)
                 .addComponent(jButtonSalvarCliente)
-                .addContainerGap(181, Short.MAX_VALUE))
+                .addContainerGap(179, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -151,10 +166,10 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
 
     private void jButtonSalvarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarClienteActionPerformed
         // TODO add your handling code here:
-        if(!inputNome.getText().isEmpty() && !inputCpf.getText().isEmpty() 
-                && !inputTelefone.getText().isEmpty() && !inputEndereco.getText().isEmpty()) {
+        if(!inputNome.getText().isEmpty() && !jFormattedTextFieldCPF.getText().isEmpty() 
+                && !jFormattedTextFieldTelefone.getText().isEmpty() && !inputEndereco.getText().isEmpty()) {
             Cliente cliente = new Cliente(TipoCartaoFidelidade.GOLD, inputNome.getText(), 
-                    inputCpf.getText(), inputTelefone.getText(), inputEndereco.getText());
+                    jFormattedTextFieldCPF.getText(), jFormattedTextFieldTelefone.getText(), inputEndereco.getText());
             cliente.setId(2);
             ClienteDAOImp clienteDAOImp = new ClienteDAOImp();
             clienteDAOImp.save(cliente);
@@ -199,11 +214,11 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel CPF;
-    private javax.swing.JTextField inputCpf;
     private javax.swing.JTextField inputEndereco;
     private javax.swing.JTextPane inputNome;
-    private javax.swing.JTextField inputTelefone;
     private javax.swing.JButton jButtonSalvarCliente;
+    private javax.swing.JFormattedTextField jFormattedTextFieldCPF;
+    private javax.swing.JFormattedTextField jFormattedTextFieldTelefone;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabelCpfCliente;
