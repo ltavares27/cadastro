@@ -32,7 +32,7 @@ public class ClienteDAOImp implements IBaseDAO<Cliente> {
             stmt.setString(2, cliente.getCpf());
             stmt.setString(3, cliente.getTelefone());
             stmt.setString(4, cliente.getEndereco());
-            stmt.setInt(5, cliente.getTipoCartaoFidelidade().getId());
+            stmt.setObject(5, cliente.getTipoCartaoFidelidade());
             stmt.executeUpdate();            
         } catch (SQLException ex) {
             System.err.println("Erro ao tentar gravar dados no banco"+ ex);
@@ -80,13 +80,13 @@ public class ClienteDAOImp implements IBaseDAO<Cliente> {
                cliente.setCpf(result.getString("cpf"));
                cliente.setEndereco(result.getString("endereco"));
                cliente.setTelefone(result.getString("telefone"));
-               int tipofidelidade = result.getInt(result.getString("tipoCartaoFidelidade"));
-                 
-               if(TipoCartaoFidelidade.GOLD.getId().equals(tipofidelidade)){
-                   cliente.setTipoCartaoFidelidade(TipoCartaoFidelidade.GOLD);
-               }else {
-                   cliente.setTipoCartaoFidelidade(TipoCartaoFidelidade.PLATINUM);
+               
+               Integer tipoId = result.getObject("tipoCartaoFidelidade", Integer.class);
+               if(tipoId != null){
+                   cliente.setTipoCartaoFidelidade(TipoCartaoFidelidade.values()[tipoId]);          
                }
+               
+               //cliente.setTipoCartaoFidelidade(result.getInt("tipoCartaoFidelidade"));          
                clientes.add(cliente);
             }  
          } catch (SQLException ex){

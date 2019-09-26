@@ -2,10 +2,8 @@ package br.com.padaria.view.list;
 
 import br.com.padaria.dao.ClienteDAOImp;
 import br.com.padaria.model.Cliente;
-import java.util.Collections;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
 /**
@@ -195,7 +193,7 @@ public class TelaListaCliente extends javax.swing.JFrame {
             modelo.addRow(new Object[]{
             c.getCpf(),
             c.getNome(),
-            c.getTipoCartaoFidelidade().getNome()
+            c.getTipoCartaoFidelidade()!= null?c.getTipoCartaoFidelidade().getNome():"---"
             });
          }
       }      

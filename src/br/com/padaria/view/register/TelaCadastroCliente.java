@@ -4,6 +4,7 @@ import br.com.padaria.dao.ClienteDAOImp;
 import br.com.padaria.domain.TipoCartaoFidelidade;
 import br.com.padaria.model.Cliente;
 import br.com.padaria.view.list.TelaListaCliente;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -164,13 +165,15 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
                 && !jFormattedTextFieldCPF.getText().isEmpty() 
                 && !jFormattedTextFieldTelefone.getText().isEmpty() 
                 && !inputEndereco.getText().isEmpty()) {
-            Cliente cliente = new Cliente(TipoCartaoFidelidade.GOLD,
+            Cliente cliente = new Cliente(null,
                                           inputNome.getText(), 
                                           jFormattedTextFieldCPF.getText(),
                                           jFormattedTextFieldTelefone.getText(),
                                           inputEndereco.getText());
             ClienteDAOImp clienteDAOImp = new ClienteDAOImp();
             clienteDAOImp.save(cliente);
+            limparTela();
+           JOptionPane.showMessageDialog(null,"Cliente Cadastro com sucesso!");
         }
     }//GEN-LAST:event_jButtonSalvarClienteActionPerformed
 
@@ -224,4 +227,11 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelTelefoneCliente;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
+
+    private void limparTela() {
+         inputNome.setText("");                                         
+         jFormattedTextFieldCPF.setText("");
+         jFormattedTextFieldTelefone.setText("");
+         inputEndereco.setText("");
+    }
 }
