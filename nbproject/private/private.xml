@@ -4,10 +4,8 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/ltavares/Documents/NetBeansProjects/AppCadastro/src/br/com/padaria/dao/ClienteDAOImp.java</file>
+            <file>file:/C:/Users/ltavares/Documents/NetBeansProjects/AppCadastro/src/br/com/padaria/view/register/TelaCadastroCliente.java</file>
             <file>file:/C:/Users/ltavares/Documents/NetBeansProjects/AppCadastro/src/br/com/padaria/view/list/TelaListaCliente.java</file>
-            <file>file:/C:/Users/ltavares/Documents/NetBeansProjects/AppCadastro/src/br/com/padaria/domain/TipoCartaoFidelidade.java</file>
-            <file>file:/C:/Users/ltavares/Documents/NetBeansProjects/AppCadastro/src/br/com/padaria/connection/ConnectionFactory.java</file>
-            <file>file:/C:/Users/ltavares/Documents/NetBeansProjects/AppCadastro/src/br/com/padaria/view/main/TelaInical.java</file>
         </group>
     </open-files>
 </project-private>

@@ -99,7 +99,7 @@ public class ClienteDAOImp implements IBaseDAO<Cliente> {
 
     @Override
     public boolean delete(Cliente cliente) {
-        String sql = "DELETE * FROM cliente WHERE id = ?";
+        String sql = "DELETE FROM cliente WHERE id = ?";
         PreparedStatement stmt = null;        
         try {
             stmt = con.prepareStatement(sql);
@@ -117,11 +117,12 @@ public class ClienteDAOImp implements IBaseDAO<Cliente> {
     @Override
     public Cliente findById(Integer id) {
        Cliente cliente =  new Cliente();
-       String sql = "SELECT * FROM  cliente WHERE id = "+ id;
+       String sql = "SELECT * FROM  cliente WHERE id = ?";
        PreparedStatement stmt = null;    
-       ResultSet result = null ;
+       ResultSet result = null;
         try {
           stmt = con.prepareStatement(sql);
+          stmt.setInt(1, cliente.getId());
           result = stmt.executeQuery();
            
          cliente.setId(result.getInt("id"));

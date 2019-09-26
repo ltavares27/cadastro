@@ -1,7 +1,6 @@
 package br.com.padaria.view.register;
 
 import br.com.padaria.dao.ClienteDAOImp;
-import br.com.padaria.domain.TipoCartaoFidelidade;
 import br.com.padaria.model.Cliente;
 import br.com.padaria.view.list.TelaListaCliente;
 import javax.swing.JOptionPane;
@@ -177,6 +176,12 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButtonSalvarClienteActionPerformed
 
+       private void limparTela() {
+         inputNome.setText("");                                         
+         jFormattedTextFieldCPF.setText("");
+         jFormattedTextFieldTelefone.setText("");
+         inputEndereco.setText("");
+    }
     /**
      * @param args the command line arguments
      */
@@ -228,10 +233,4 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 
-    private void limparTela() {
-         inputNome.setText("");                                         
-         jFormattedTextFieldCPF.setText("");
-         jFormattedTextFieldTelefone.setText("");
-         inputEndereco.setText("");
-    }
 }

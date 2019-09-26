@@ -3,6 +3,7 @@ package br.com.padaria.view.list;
 import br.com.padaria.dao.ClienteDAOImp;
 import br.com.padaria.model.Cliente;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 
@@ -33,11 +34,11 @@ public class TelaListaCliente extends javax.swing.JFrame {
         jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
         jLabel1 = new javax.swing.JLabel();
         CPF = new javax.swing.JPanel();
-        jButtonEditarCliente = new javax.swing.JButton();
         jButtonDetalhesCliente = new javax.swing.JButton();
-        jButtonExcluirCliente1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableCliente = new javax.swing.JTable();
+        jButtonEditar = new javax.swing.JButton();
+        jButtonExcluir = new javax.swing.JButton();
 
         jMenu1.setText("jMenu1");
 
@@ -59,9 +60,6 @@ public class TelaListaCliente extends javax.swing.JFrame {
         CPF.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Clientes", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 12))); // NOI18N
         CPF.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
 
-        jButtonEditarCliente.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jButtonEditarCliente.setText("Editar");
-
         jButtonDetalhesCliente.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jButtonDetalhesCliente.setText("Detalhes");
         jButtonDetalhesCliente.addActionListener(new java.awt.event.ActionListener() {
@@ -70,20 +68,17 @@ public class TelaListaCliente extends javax.swing.JFrame {
             }
         });
 
-        jButtonExcluirCliente1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jButtonExcluirCliente1.setText("Exluir");
-
         jTableCliente.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jTableCliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "CPF", "Nome", "Tipo Fidelidade"
+                "#", "CPF", "Nome", "Tipo Fidelidade"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -91,6 +86,20 @@ public class TelaListaCliente extends javax.swing.JFrame {
             }
         });
         jScrollPane1.setViewportView(jTableCliente);
+        if (jTableCliente.getColumnModel().getColumnCount() > 0) {
+            jTableCliente.getColumnModel().getColumn(2).setResizable(false);
+        }
+
+        jButtonEditar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jButtonEditar.setText("Editar");
+
+        jButtonExcluir.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jButtonExcluir.setText("Excluir");
+        jButtonExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonExcluirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout CPFLayout = new javax.swing.GroupLayout(CPF);
         CPF.setLayout(CPFLayout);
@@ -98,23 +107,22 @@ public class TelaListaCliente extends javax.swing.JFrame {
             CPFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(CPFLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButtonEditarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
+                .addComponent(jButtonEditar)
+                .addGap(18, 18, 18)
                 .addComponent(jButtonDetalhesCliente)
                 .addGap(18, 18, 18)
-                .addComponent(jButtonExcluirCliente1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(321, Short.MAX_VALUE))
-            .addComponent(jScrollPane1)
+                .addComponent(jButtonExcluir)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 626, Short.MAX_VALUE)
         );
         CPFLayout.setVerticalGroup(
             CPFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(CPFLayout.createSequentialGroup()
                 .addGap(5, 5, 5)
-                .addGroup(CPFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButtonEditarCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE)
-                    .addGroup(CPFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButtonExcluirCliente1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButtonDetalhesCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(CPFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonDetalhesCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonEditar)
+                    .addComponent(jButtonExcluir))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 471, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20))
@@ -150,6 +158,34 @@ public class TelaListaCliente extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonDetalhesClienteActionPerformed
 
+    private void jButtonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExcluirActionPerformed
+          if(jTableCliente.getSelectedRow() != -1){
+                   
+            if(comfirmaSeDesejaExcluir()){
+            Cliente cliente = new Cliente();
+            ClienteDAOImp dao = new ClienteDAOImp();
+
+            cliente.setId((Integer) jTableCliente.getValueAt(jTableCliente.getSelectedRow(), 0));
+            dao.delete(cliente);
+            carregaListClientes();
+            JOptionPane.showMessageDialog(null,"Cliente deletado com sucesso.");
+           } else {
+             return;   
+           }
+        }else {
+             JOptionPane.showMessageDialog(null,"selecione um cliente para excluir.");
+        }
+    }//GEN-LAST:event_jButtonExcluirActionPerformed
+
+  
+      private boolean comfirmaSeDesejaExcluir() {
+         int input = JOptionPane.showConfirmDialog(null, "Deseje realmente exluir esse cliente?");
+         if(input == 0){
+           return  true; 
+         } else {
+           return false;  
+         }  
+    }
     /**
      * @param args the command line arguments
      */
@@ -183,28 +219,26 @@ public class TelaListaCliente extends javax.swing.JFrame {
     public void carregaListClientes(){
         DefaultTableModel modelo = (DefaultTableModel) jTableCliente.getModel(); 
         modelo.setNumRows(0);
-   
         ClienteDAOImp dao = new ClienteDAOImp();
         
-        List<Cliente> clienetes = dao.findAll();
-        
-        if(!clienetes.isEmpty()) {
-          for(Cliente c: clienetes) {
+        List<Cliente> clientes = dao.findAll();        
+        if(!clientes.isEmpty()) {
+          for(Cliente c: clientes) {
             modelo.addRow(new Object[]{
+            c.getId(),
             c.getCpf(),
             c.getNome(),
-            c.getTipoCartaoFidelidade()!= null?c.getTipoCartaoFidelidade().getNome():"---"
+            c.getTipoCartaoFidelidade() !=  null ? c.getTipoCartaoFidelidade().getNome() : "---"
             });
          }
-      }      
-        
+      }       
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel CPF;
     private javax.swing.JButton jButtonDetalhesCliente;
-    private javax.swing.JButton jButtonEditarCliente;
-    private javax.swing.JButton jButtonExcluirCliente1;
+    private javax.swing.JButton jButtonEditar;
+    private javax.swing.JButton jButtonExcluir;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
@@ -214,4 +248,6 @@ public class TelaListaCliente extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableCliente;
     // End of variables declaration//GEN-END:variables
+
+       
 }
