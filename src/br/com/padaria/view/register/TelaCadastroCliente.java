@@ -34,9 +34,10 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
         inputEndereco = new javax.swing.JTextField();
         jLabelCpfCliente = new javax.swing.JLabel();
         jLabelTelefoneCliente = new javax.swing.JLabel();
-        jButtonSalvarCliente = new javax.swing.JButton();
         jFormattedTextFieldCPF = new javax.swing.JFormattedTextField();
         jFormattedTextFieldTelefone = new javax.swing.JFormattedTextField();
+        jButtonSalvarCliente = new javax.swing.JButton();
+        jButtonFechar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Tela de Cadastro de Cliente");
@@ -62,14 +63,6 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
 
         jLabelTelefoneCliente.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabelTelefoneCliente.setText("Telefone");
-
-        jButtonSalvarCliente.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jButtonSalvarCliente.setText("Salvar");
-        jButtonSalvarCliente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonSalvarClienteActionPerformed(evt);
-            }
-        });
 
         try {
             jFormattedTextFieldCPF.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
@@ -101,9 +94,6 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
                             .addComponent(jLabelCpfCliente)
                             .addComponent(jLabelTelefoneCliente)))
                     .addGroup(CPFLayout.createSequentialGroup()
-                        .addGap(251, 251, 251)
-                        .addComponent(jButtonSalvarCliente))
-                    .addGroup(CPFLayout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(CPFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jFormattedTextFieldTelefone, javax.swing.GroupLayout.Alignment.LEADING)
@@ -129,10 +119,24 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
                 .addComponent(jLabelTelefoneCliente)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jFormattedTextFieldTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(96, 96, 96)
-                .addComponent(jButtonSalvarCliente)
-                .addContainerGap(179, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        jButtonSalvarCliente.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jButtonSalvarCliente.setText("Salvar");
+        jButtonSalvarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSalvarClienteActionPerformed(evt);
+            }
+        });
+
+        jButtonFechar.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jButtonFechar.setText("Fechar");
+        jButtonFechar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonFecharActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -140,16 +144,30 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(CPF, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(CPF, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButtonSalvarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButtonFechar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 450, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(CPF, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButtonSalvarCliente)
+                            .addComponent(jButtonFechar))
+                        .addGap(10, 10, 10)
+                        .addComponent(CPF, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(0, 352, Short.MAX_VALUE)))
+                .addContainerGap())
         );
 
         getAccessibleContext().setAccessibleName("Tele de Cadastro de Cliente");
@@ -172,9 +190,14 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
             ClienteDAOImp clienteDAOImp = new ClienteDAOImp();
             clienteDAOImp.save(cliente);
             limparTela();
-           JOptionPane.showMessageDialog(null,"Cliente Cadastro com sucesso!");
+            JOptionPane.showMessageDialog(null,"Cliente Cadastro com sucesso!");
+            this.dispose();
         }
     }//GEN-LAST:event_jButtonSalvarClienteActionPerformed
+
+    private void jButtonFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFecharActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jButtonFecharActionPerformed
 
        private void limparTela() {
          inputNome.setText("");                                         
@@ -222,6 +245,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
     private javax.swing.JPanel CPF;
     private javax.swing.JTextField inputEndereco;
     private javax.swing.JTextPane inputNome;
+    private javax.swing.JButton jButtonFechar;
     private javax.swing.JButton jButtonSalvarCliente;
     private javax.swing.JFormattedTextField jFormattedTextFieldCPF;
     private javax.swing.JFormattedTextField jFormattedTextFieldTelefone;

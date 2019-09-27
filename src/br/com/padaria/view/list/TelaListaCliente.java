@@ -2,6 +2,7 @@ package br.com.padaria.view.list;
 
 import br.com.padaria.dao.ClienteDAOImp;
 import br.com.padaria.model.Cliente;
+import br.com.padaria.view.Edit.TelaEditarCliente;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -12,7 +13,8 @@ import javax.swing.table.TableRowSorter;
  * @author luisp
  */
 public class TelaListaCliente extends javax.swing.JFrame {
-
+    
+    private TelaEditarCliente telaEditarCliente =  new TelaEditarCliente();
     /**
      * Creates new form TelaCadastroFuncionario
      */
@@ -87,11 +89,17 @@ public class TelaListaCliente extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTableCliente);
         if (jTableCliente.getColumnModel().getColumnCount() > 0) {
-            jTableCliente.getColumnModel().getColumn(2).setResizable(false);
+            jTableCliente.getColumnModel().getColumn(0).setPreferredWidth(1);
+            jTableCliente.getColumnModel().getColumn(1).setPreferredWidth(1);
         }
 
         jButtonEditar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jButtonEditar.setText("Editar");
+        jButtonEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEditarActionPerformed(evt);
+            }
+        });
 
         jButtonExcluir.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jButtonExcluir.setText("Excluir");
@@ -159,25 +167,34 @@ public class TelaListaCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonDetalhesClienteActionPerformed
 
     private void jButtonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExcluirActionPerformed
-          if(jTableCliente.getSelectedRow() != -1){
-                   
-            if(comfirmaSeDesejaExcluir()){
-            Cliente cliente = new Cliente();
-            ClienteDAOImp dao = new ClienteDAOImp();
+          if(jTableCliente.getSelectedRow() != -1) {                   
+            if (comfirmaSeDesejaExcluir()){
+                Cliente cliente = new Cliente();
+                ClienteDAOImp dao = new ClienteDAOImp();
 
-            cliente.setId((Integer) jTableCliente.getValueAt(jTableCliente.getSelectedRow(), 0));
-            dao.delete(cliente);
-            carregaListClientes();
-            JOptionPane.showMessageDialog(null,"Cliente deletado com sucesso.");
+                cliente.setId((Integer) jTableCliente.getValueAt(jTableCliente.getSelectedRow(), 0));
+                dao.delete(cliente);
+                carregaListClientes();
+                JOptionPane.showMessageDialog(null,"Cliente deletado com sucesso.");
            } else {
              return;   
            }
-        }else {
+        } else {
              JOptionPane.showMessageDialog(null,"selecione um cliente para excluir.");
         }
     }//GEN-LAST:event_jButtonExcluirActionPerformed
 
-  
+    private void jButtonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditarActionPerformed
+          if (jTableCliente.getSelectedRow() != -1){
+            this.dispose();           
+          
+           telaEditarCliente.carregaTelaEditarCliente((int) jTableCliente.getValueAt(jTableCliente.getSelectedRow(), 0));
+           telaEditarCliente.setVisible(true);
+          } else {
+             JOptionPane.showMessageDialog(null,"selecione um cliente para editar.");
+        }
+    }//GEN-LAST:event_jButtonEditarActionPerformed
+
       private boolean comfirmaSeDesejaExcluir() {
          int input = JOptionPane.showConfirmDialog(null, "Deseje realmente exluir esse cliente?");
          if(input == 0){

@@ -119,18 +119,31 @@ public class ClienteDAOImp implements IBaseDAO<Cliente> {
        Cliente cliente =  new Cliente();
        String sql = "SELECT * FROM  cliente WHERE id = ?";
        PreparedStatement stmt = null;    
-       ResultSet result = null;
+       ResultSet result = null ;
         try {
+          if(id != null) {  
           stmt = con.prepareStatement(sql);
-          stmt.setInt(1, cliente.getId());
-          result = stmt.executeQuery();
+          stmt.setInt(1, id);
+          result = stmt.executeQuery();   
+          
+            while(result.next()){
            
-         cliente.setId(result.getInt("id"));
-         cliente.setNome(result.getNString("nome"));
-         cliente.setCpf(result.getNString("cpf"));
-         cliente.setEndereco(result.getNString("endereco"));
-         cliente.setTelefone(result.getNString("telefone"));
+           
+                cliente.setId(result.getInt("id"));
+                cliente.setNome(result.getString("nome"));
+                cliente.setCpf(result.getString("cpf"));
+                cliente.setEndereco(result.getString("endereco"));
+                cliente.setTelefone(result.getString("telefone"));
+
+                   Integer tipoId = result.getObject("tipoCartaoFidelidade", Integer.class);
+                if(tipoId != null){
+                    cliente.setTipoCartaoFidelidade(TipoCartaoFidelidade.values()[tipoId]);          
+                 }
+            }
+
          
+              
+            }  
          } catch (SQLException ex){
              System.err.println("Erro ao tentar buscar dados no banco"+ ex);
          } finally {
