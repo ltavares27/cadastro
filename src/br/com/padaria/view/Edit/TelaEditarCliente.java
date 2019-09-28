@@ -3,6 +3,8 @@ package br.com.padaria.view.Edit;
 
 import br.com.padaria.dao.ClienteDAOImp;
 import br.com.padaria.model.Cliente;
+import br.com.padaria.view.list.TelaListaCliente;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -11,6 +13,8 @@ import br.com.padaria.model.Cliente;
 public class TelaEditarCliente extends javax.swing.JFrame {
 
     private ClienteDAOImp clienteDao = new ClienteDAOImp();
+    
+    Cliente cliente = new Cliente();
    
     /**
      * Creates new form TelaCadastroFuncionario
@@ -20,7 +24,7 @@ public class TelaEditarCliente extends javax.swing.JFrame {
     }
     
     public void carregaTelaEditarCliente(int id){
-      Cliente cliente = new Cliente();
+      
       cliente = clienteDao.findById(id);
       
       jFormattedTextFieldCPF.setText(cliente.getCpf());
@@ -142,6 +146,11 @@ public class TelaEditarCliente extends javax.swing.JFrame {
 
         button1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         button1.setLabel("Fechar");
+        button1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -182,9 +191,27 @@ public class TelaEditarCliente extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    //TODO implementar metodo salvar do editar
     private void SalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalvarActionPerformed
-        // TODO add your handling code here:
+         if(!jTextPaneNome.getText().isEmpty() 
+                && !jFormattedTextFieldCPF.getText().isEmpty() 
+                && !jFormattedTextFieldTelefone.getText().isEmpty() 
+                && !jTextFieldEndereco.getText().isEmpty()) {
+            cliente.setNome(jTextPaneNome.getText());
+            cliente.setEndereco(jTextFieldEndereco.getText());
+            cliente.setTelefone(jFormattedTextFieldTelefone.getText());
+            cliente.setCpf(jFormattedTextFieldCPF.getText());                                    
+            clienteDao.update(cliente);
+             JOptionPane.showMessageDialog(null,"Cadastro atualizado com sucesso!");
+         } else {
+              JOptionPane.showMessageDialog(null,"existem campos que não podem ficar em braco.");
+         }
     }//GEN-LAST:event_SalvarActionPerformed
+
+    private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
+         new TelaListaCliente().setVisible(true);
+         this.dispose(); 
+    }//GEN-LAST:event_button1ActionPerformed
 
     /**
      * @param args the command line arguments

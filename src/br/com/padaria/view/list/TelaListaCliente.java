@@ -3,6 +3,7 @@ package br.com.padaria.view.list;
 import br.com.padaria.dao.ClienteDAOImp;
 import br.com.padaria.model.Cliente;
 import br.com.padaria.view.Edit.TelaEditarCliente;
+import br.com.padaria.view.detail.TelaDetalheCliente;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -15,6 +16,8 @@ import javax.swing.table.TableRowSorter;
 public class TelaListaCliente extends javax.swing.JFrame {
     
     private TelaEditarCliente telaEditarCliente =  new TelaEditarCliente();
+    
+    private TelaDetalheCliente telaDetalheCliente =  new TelaDetalheCliente();
     /**
      * Creates new form TelaCadastroFuncionario
      */
@@ -163,7 +166,14 @@ public class TelaListaCliente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonDetalhesClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDetalhesClienteActionPerformed
-        // TODO add your handling code here:
+        if (jTableCliente.getSelectedRow() != -1){
+            this.dispose();           
+          
+           telaDetalheCliente.carregaTelaEditarCliente((int) jTableCliente.getValueAt(jTableCliente.getSelectedRow(), 0));
+           telaDetalheCliente.setVisible(true);
+          } else {
+             JOptionPane.showMessageDialog(null,"selecione um cliente para ver detalhes.");
+        }
     }//GEN-LAST:event_jButtonDetalhesClienteActionPerformed
 
     private void jButtonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExcluirActionPerformed
@@ -196,7 +206,7 @@ public class TelaListaCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonEditarActionPerformed
 
       private boolean comfirmaSeDesejaExcluir() {
-         int input = JOptionPane.showConfirmDialog(null, "Deseje realmente exluir esse cliente?");
+         int input = JOptionPane.showConfirmDialog(null, "Deseje realmente exluir esse cliente?", "Aviso", JOptionPane.YES_NO_OPTION);        
          if(input == 0){
            return  true; 
          } else {

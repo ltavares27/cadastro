@@ -14,6 +14,9 @@ public class Funcionario extends Pessoa{
     
     private Cargo cargo;
 
+    public Funcionario() {
+    }   
+
     public Funcionario(double salario, double bonificacao, String nome, String cpf, String telefone, String endereco, Cargo cargo) {
         super(nome, cpf, telefone, endereco);
         this.salario = salario;
@@ -36,6 +39,16 @@ public class Funcionario extends Pessoa{
     public void setBonificacao(double bonificacao) {
         this.bonificacao = bonificacao;
     }
+
+    public Cargo getCargo() {
+        return cargo;
+    }
+
+    public void setCargo(Cargo cargo) {
+        this.cargo = cargo;
+    }
+    
+    
    
     
 }
