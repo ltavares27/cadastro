@@ -1,32 +1,40 @@
 package br.com.padaria.model;
 
 import br.com.padaria.domain.FormaPagamento;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
 /**
  *
  * @author luisp
  */
-public class Caixa extends Venda{
-
-    public Caixa(Integer quantidadeProduto, double subTotalPorProduto, Integer parcelas, double subTotalAPagar, double totalAPagar, Date dataVenda, FormaPagamento formaPagamento, Funcionario funcionario, Cliente cliente) {
-        super(dataVenda, formaPagamento, funcionario, cliente);
-        this.quantidadeProduto = quantidadeProduto;
-        this.subTotalPorProduto = subTotalPorProduto;
-        this.parcelas = parcelas;
-        this.subTotalAPagar = subTotalAPagar;
-        this.totalAPagar = totalAPagar;
-    }
-
+public class Caixa extends Venda {
+    
     private Integer quantidadeProduto;
     
     private double subTotalPorProduto;
+    
+    private FormaPagamento formaPagamento;
     
     private Integer parcelas;
     
     private double subTotalAPagar;
     
-    private double totalAPagar;
+    private double totalAPagar;    
+    
+    private List<Produto> produtos = new ArrayList<>();
+
+    public Caixa(Integer quantidadeProduto, double subTotalPorProduto, FormaPagamento formaPagamento, Integer parcelas, double subTotalAPagar, double totalAPagar, Date dataVenda, Funcionario funcionario, Cliente cliente, double totalVenda) {
+        super(dataVenda, funcionario, cliente, totalVenda);
+        this.quantidadeProduto = quantidadeProduto;
+        this.subTotalPorProduto = subTotalPorProduto;
+        this.formaPagamento = formaPagamento;
+        this.parcelas = parcelas;
+        this.subTotalAPagar = subTotalAPagar;
+        this.totalAPagar = totalAPagar;
+    }
 
     public Integer getQuantidadeProduto() {
         return quantidadeProduto;
@@ -42,6 +50,14 @@ public class Caixa extends Venda{
 
     public void setSubTotalPorProduto(double subTotalPorProduto) {
         this.subTotalPorProduto = subTotalPorProduto;
+    }
+
+    public FormaPagamento getFormaPagamento() {
+        return formaPagamento;
+    }
+
+    public void setFormaPagamento(FormaPagamento formaPagamento) {
+        this.formaPagamento = formaPagamento;
     }
 
     public Integer getParcelas() {
@@ -67,4 +83,16 @@ public class Caixa extends Venda{
     public void setTotalAPagar(double totalAPagar) {
         this.totalAPagar = totalAPagar;
     }
+
+    public List<Produto> getProdutos() {
+        return produtos;
+    }
+
+    public void setProdutos(List<Produto> produtos) {
+        this.produtos = produtos;
+    }
+    
+    
+    
+   
 }

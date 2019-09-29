@@ -9,32 +9,31 @@ import java.util.List;
 /**
  *
  * @author luisp
+ * 
+ * 
+ * 
+ *      `cliente_id` INT(11) NULL DEFAULT NULL,
+	`funcionario_id` INT(11) NULL DEFAULT NULL,
+	`caixa_id` INT(11) NULL DEFAULT NULL,
+        `dataVenda` DATE NULL DEFAULT NULL,
+ * 
+ * 
  */
 public abstract class Venda {
-  
-    private List<Produto> produtos = new ArrayList<>();
-    
-    private Date dataVenda;
-    
-    private FormaPagamento formaPagamento;
+     
+    private Date dataVenda;  
     
     private Funcionario funcionario;
     
     private Cliente cliente;
+    
+    double totalVenda;
 
-    public Venda(Date dataVenda, FormaPagamento formaPagamento, Funcionario funcionario, Cliente cliente) {
+    public Venda(Date dataVenda, Funcionario funcionario, Cliente cliente, double totalVenda) {
         this.dataVenda = dataVenda;
-        this.formaPagamento = formaPagamento;
         this.funcionario = funcionario;
         this.cliente = cliente;
-    }
-
-    public List<Produto> getProdutos() {
-        return produtos;
-    }
-
-    public void setProdutos(List<Produto> produtos) {
-        this.produtos = produtos;
+        this.totalVenda = totalVenda;
     }
 
     public Date getDataVenda() {
@@ -43,14 +42,6 @@ public abstract class Venda {
 
     public void setDataVenda(Date dataVenda) {
         this.dataVenda = dataVenda;
-    }
-
-    public FormaPagamento getFormaPagamento() {
-        return formaPagamento;
-    }
-
-    public void setFormaPagamento(FormaPagamento formaPagamento) {
-        this.formaPagamento = formaPagamento;
     }
 
     public Funcionario getFuncionario() {
@@ -68,4 +59,19 @@ public abstract class Venda {
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
+
+    public double getTotalVenda() {
+        return totalVenda;
+    }
+
+    public void setTotalVenda(double totalVenda) {
+        this.totalVenda = totalVenda;
+    }
+    
+    
+    
+
+   
+
+
 }

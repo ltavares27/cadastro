@@ -2,8 +2,6 @@ package br.com.padaria.dao;
 
 import br.com.padaria.connection.ConnectionFactory;
 import br.com.padaria.domain.Cargo;
-import br.com.padaria.domain.TipoCartaoFidelidade;
-import br.com.padaria.model.Cliente;
 import br.com.padaria.model.Funcionario;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -15,6 +13,21 @@ import java.util.List;
 /**
  *
  * @author ltavares
+ * 
+ * CREATE TABLE `funcionario` (
+	`id` INT(11) NOT NULL AUTO_INCREMENT,
+	`nome` VARCHAR(255) NULL DEFAULT NULL,
+	`cpf` VARCHAR(255) NULL DEFAULT NULL,
+	`telefone` VARCHAR(255) NULL DEFAULT NULL,
+	`endereco` VARCHAR(255) NULL DEFAULT NULL,
+	`cargo` INT(11) NULL DEFAULT NULL,
+	`salario` FLOAT(11) NULL DEFAULT NULL,
+	`bonificacao` FLOAT(11) NULL DEFAULT NULL,
+	PRIMARY KEY (`id`)
+)
+ * 
+ * 
+ * 
  */
 public class FuncionarioDAOImp implements IBaseDAO<Funcionario> {
     
@@ -26,7 +39,7 @@ public class FuncionarioDAOImp implements IBaseDAO<Funcionario> {
   
     @Override
     public Funcionario save(Funcionario funcionario) {
-        String sql = "INSERT INTO cliente (nome, cpf, telefone, endereco, tipoCartaoFidelidade) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO funcionario (nome, cpf, telefone, endereco, cargo, salario, bonificacao) VALUES (?, ?, ?, ?, ?,?,:)";
         PreparedStatement stmt = null;        
         try {
             stmt = con.prepareStatement(sql);  
@@ -35,6 +48,8 @@ public class FuncionarioDAOImp implements IBaseDAO<Funcionario> {
             stmt.setString(3, funcionario.getTelefone());
             stmt.setString(4, funcionario.getEndereco());
             stmt.setObject(5, funcionario.getCargo());
+            stmt.setDouble(6, funcionario.getSalario());
+            stmt.setDouble(7, funcionario.getBonificacao());           
             stmt.executeUpdate();            
         } catch (SQLException ex) {
             System.err.println("Erro ao tentar gravar dados no banco"+ ex);
@@ -47,17 +62,19 @@ public class FuncionarioDAOImp implements IBaseDAO<Funcionario> {
     @Override
     public Funcionario update(Funcionario funcionario) {
         Connection con = ConnectionFactory.getConnetion();
-        String sql = "UPDATE cliente SET nome = ?, cpf = ? , telefone = ?, endereco = ?, tipoCartaoFidelidade = ?  "
+        String sql = "UPDATE funcionario SET nome = ?, cpf = ? , telefone = ?, endereco = ?, cargo = ?, salario = ?, bonificacao = ? "
                    + "WHERE id = ?";
         PreparedStatement stmt = null;        
         try {
             stmt = con.prepareStatement(sql);     
-            stmt.setString(1, funcionario.getNome());
-            stmt.setString(2, funcionario.getCpf());   
-            stmt.setString(3, funcionario.getTelefone());                    
+           stmt.setString(1, funcionario.getNome());
+            stmt.setString(2, funcionario.getCpf());
+            stmt.setString(3, funcionario.getTelefone());
             stmt.setString(4, funcionario.getEndereco());
             stmt.setObject(5, funcionario.getCargo());
-            stmt.setInt(6, funcionario.getId());
+            stmt.setDouble(6, funcionario.getSalario());
+            stmt.setDouble(7, funcionario.getBonificacao());        
+            stmt.setInt(8, funcionario.getId());        
             stmt.executeUpdate();            
         } catch (SQLException ex) {
             System.err.println("Erro ao tentar gravar dados no banco "+ ex);
@@ -70,7 +87,7 @@ public class FuncionarioDAOImp implements IBaseDAO<Funcionario> {
     @Override
     public List<Funcionario> findAll() {
        List<Funcionario> funcionarios =  new ArrayList<>();
-       String sql = "SELECT * FROM  cliente";
+       String sql = "SELECT * FROM  funcionario";
        PreparedStatement stmt = null;    
        ResultSet result = null ;
         try {
