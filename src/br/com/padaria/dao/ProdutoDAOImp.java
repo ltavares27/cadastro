@@ -156,11 +156,11 @@ public class ProdutoDAOImp implements IBaseDAO<Produto> {
                produto.setApelido(result.getString("appelido"));
                produto.setPrecoCusto(result.getDouble("precoCusto"));
                produto.setPrecoFinal(result.getDouble("precoFinal"));               
-  //             produto.setFornecedor(BuildFornecedor(result.getInt("fornecedor_id")));               
+               produto.setFornecedor(BuildFornecedor(result.getInt("fornecedor_id")));               
                Integer tipoId = result.getObject("tipoAlimento", Integer.class);
                if(tipoId != null && tipoId != 0){
                    produto.setTipoAlimento(TipoAlimento.values()[tipoId]);          
-               }          
+                 }          
                }            
             }  
          } catch (SQLException ex){
@@ -171,7 +171,7 @@ public class ProdutoDAOImp implements IBaseDAO<Produto> {
         return produto;
     }   
 
-//    private Fornecedor BuildFornecedor(Integer idFornecedor) {
-//       return new FornecedorDAOImp().findById(idFornecedor);
-//    }
+    private Fornecedor BuildFornecedor(Integer idFornecedor) {
+       return new FornecedorDAOImp().findById(idFornecedor);
+    }
 }

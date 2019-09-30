@@ -64,6 +64,7 @@ public class FornecedorDAOImp implements IBaseDAO<Fornecedor> {
     @Override
     public List<Fornecedor> findAll() {
         List<Fornecedor> fornecedors = new ArrayList<>();
+        Fornecedor fornecedor = new Fornecedor();
         String sql = "SELECT * FROM  fornecedor";
         PreparedStatement stmt = null;
         ResultSet result = null;
@@ -72,7 +73,6 @@ public class FornecedorDAOImp implements IBaseDAO<Fornecedor> {
             result = stmt.executeQuery();
 
             while (result.next()) {
-                Fornecedor fornecedor = new Fornecedor();
                 fornecedor.setId(result.getInt("id"));
                 fornecedor.setRazaoSocial(result.getString("razaoSocial"));
                 fornecedor.setCnpj(result.getString("cnpj"));
@@ -118,7 +118,6 @@ public class FornecedorDAOImp implements IBaseDAO<Fornecedor> {
                 result = stmt.executeQuery();
 
                 while (result.next()) {
-                    fornecedor.setId(result.getInt("id"));
                     fornecedor.setId(result.getInt("id"));
                     fornecedor.setRazaoSocial(result.getString("razaoSocial"));
                     fornecedor.setCnpj(result.getString("cnpj"));
