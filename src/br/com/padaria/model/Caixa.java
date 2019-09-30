@@ -9,7 +9,7 @@ import java.util.List;
  *
  * @author luisp
  */
-public class Caixa extends Venda {
+public class Caixa extends BaseEntity {
     
     private Integer quantidadeProduto;
     
@@ -27,8 +27,7 @@ public class Caixa extends Venda {
     
     private Produto produto;
 
-    public Caixa(Integer quantidadeProduto, double subTotalPorProduto, FormaPagamento formaPagamento, Integer parcelas, double subTotalAPagar, double totalAPagar, Produto produto, Date dataVenda, Funcionario funcionario, Cliente cliente, double totalVenda) {
-        super(dataVenda, funcionario, cliente, totalVenda);
+    public Caixa(Integer quantidadeProduto, double subTotalPorProduto, FormaPagamento formaPagamento, Integer parcelas, double subTotalAPagar, double totalAPagar, Produto produto) {
         this.quantidadeProduto = quantidadeProduto;
         this.subTotalPorProduto = subTotalPorProduto;
         this.formaPagamento = formaPagamento;
@@ -36,15 +35,9 @@ public class Caixa extends Venda {
         this.subTotalAPagar = subTotalAPagar;
         this.totalAPagar = totalAPagar;
         this.produto = produto;
-    } 
-
-    public Caixa(Date dataVenda, Funcionario funcionario, Cliente cliente, double totalVenda) {
-        super(dataVenda, funcionario, cliente, totalVenda);
     }
     
     public Caixa(){}
-
-   
 
     public Integer getQuantidadeProduto() {
         return quantidadeProduto;

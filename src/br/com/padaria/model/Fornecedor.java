@@ -4,7 +4,7 @@ package br.com.padaria.model;
  *
  * @author luisp
  */
-public class Fornecedor {
+public class Fornecedor extends BaseEntity {
     
     private String razaoSocial;
     

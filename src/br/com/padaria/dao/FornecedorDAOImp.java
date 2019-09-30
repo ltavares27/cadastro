@@ -1,8 +1,7 @@
 package br.com.padaria.dao;
 
 import br.com.padaria.connection.ConnectionFactory;
-import br.com.padaria.domain.TipoCartaoFidelidade;
-import br.com.padaria.model.Cliente;
+import br.com.padaria.model.Fornecedor;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,100 +13,92 @@ import java.util.List;
  *
  * @author ltavares
  */
-public class FornecedorDAOImp implements IBaseDAO<Cliente> {
-    
+public class FornecedorDAOImp implements IBaseDAO<Fornecedor> {
+
     private Connection con = null;
 
     public FornecedorDAOImp() {
         con = ConnectionFactory.getConnetion();
     }
-  
-    @Override
-    public Cliente save(Cliente cliente) {
-        String sql = "INSERT INTO cliente (nome, cpf, telefone, endereco, tipoCartaoFidelidade) VALUES (?, ?, ?, ?, ?)";
-        PreparedStatement stmt = null;        
-        try {
-            stmt = con.prepareStatement(sql);  
-            stmt.setString(1, cliente.getNome());
-            stmt.setString(2, cliente.getCpf());
-            stmt.setString(3, cliente.getTelefone());
-            stmt.setString(4, cliente.getEndereco());
-            stmt.setObject(5, cliente.getTipoCartaoFidelidade());
-            stmt.executeUpdate();            
-        } catch (SQLException ex) {
-            System.err.println("Erro ao tentar gravar dados no banco"+ ex);
-        } finally {
-            ConnectionFactory.closeConnetion(con, stmt);
-        }
-        return cliente;
-    }
 
     @Override
-    public Cliente update(Cliente cliente) {
-        Connection con = ConnectionFactory.getConnetion();
-        String sql = "UPDATE cliente SET nome = ?, cpf = ? , telefone = ?, endereco = ?, tipoCartaoFidelidade = ?  "
-                   + "WHERE id = ?";
-        PreparedStatement stmt = null;        
-        try {
-            stmt = con.prepareStatement(sql);     
-            stmt.setString(1, cliente.getNome());
-            stmt.setString(2, cliente.getCpf());   
-            stmt.setString(3, cliente.getTelefone());                    
-            stmt.setString(4, cliente.getEndereco());
-            stmt.setObject(5, cliente.getTipoCartaoFidelidade());
-            stmt.setInt(6, cliente.getId());
-            stmt.executeUpdate();            
-        } catch (SQLException ex) {
-            System.err.println("Erro ao tentar gravar dados no banco "+ ex);
-        } finally {
-            ConnectionFactory.closeConnetion(con, stmt);
-        }
-        return cliente;
-    }
-
-    @Override
-    public List<Cliente> findAll() {
-       List<Cliente> clientes =  new ArrayList<>();
-       String sql = "SELECT * FROM  cliente";
-       PreparedStatement stmt = null;    
-       ResultSet result = null ;
-        try {
-          stmt = con.prepareStatement(sql);
-          result = stmt.executeQuery();
-          
-            while(result.next()){
-               Cliente cliente = new Cliente();
-               cliente.setId(result.getInt("id"));
-               cliente.setNome(result.getString("nome"));
-               cliente.setCpf(result.getString("cpf"));
-               cliente.setEndereco(result.getString("endereco"));
-               cliente.setTelefone(result.getString("telefone"));
-               
-               Integer tipoId = result.getObject("tipoCartaoFidelidade", Integer.class);
-               if(tipoId != null && tipoId != 0){
-                   cliente.setTipoCartaoFidelidade(TipoCartaoFidelidade.values()[tipoId]);          
-               }          
-               clientes.add(cliente);
-            }  
-         } catch (SQLException ex){
-             System.err.println("Erro ao tentar buscar dados no banco"+ ex);
-         } finally {
-            ConnectionFactory.closeConnetion(con, stmt, result);
-        }
-        return clientes;
-    }
-
-    @Override
-    public boolean delete(Cliente cliente) {
-        String sql = "DELETE FROM cliente WHERE id = ?";
-        PreparedStatement stmt = null;        
+    public Fornecedor save(Fornecedor fornecedor) {
+        String sql = "INSERT INTO fornecedor (razaoSocial, cnpj, endereco, recorrente) VALUES (?, ?, ?, ?)";
+        PreparedStatement stmt = null;
         try {
             stmt = con.prepareStatement(sql);
-            stmt.setInt(1, cliente.getId());
-            stmt.executeUpdate();     
+            stmt.setString(1, fornecedor.getRazaoSocial());
+            stmt.setString(2, fornecedor.getCnpj());
+            stmt.setString(3, fornecedor.getEndereco());
+            stmt.setBoolean(4, fornecedor.isRecorrente());
+            stmt.executeUpdate();
+        } catch (SQLException ex) {
+            System.err.println("Erro ao tentar gravar dados no banco " + ex);
+        } finally {
+            ConnectionFactory.closeConnetion(con, stmt);
+        }
+        return fornecedor;
+    }
+
+    @Override
+    public Fornecedor update(Fornecedor fornecedor) {
+        Connection con = ConnectionFactory.getConnetion();
+        String sql = "UPDATE fornecedor SET razaoSocial = ?, cnpj = ? , endereco = ?, recorrente = ? "
+                + "WHERE id = ?";
+        PreparedStatement stmt = null;
+        try {
+            stmt = con.prepareStatement(sql);
+            stmt.setString(1, fornecedor.getRazaoSocial());
+            stmt.setString(2, fornecedor.getCnpj());
+            stmt.setString(3, fornecedor.getEndereco());
+            stmt.setBoolean(4, fornecedor.isRecorrente());
+            stmt.executeUpdate();
+        } catch (SQLException ex) {
+            System.err.println("Erro ao tentar gravar dados no banco " + ex);
+        } finally {
+            ConnectionFactory.closeConnetion(con, stmt);
+        }
+        return fornecedor;
+    }
+
+    @Override
+    public List<Fornecedor> findAll() {
+        List<Fornecedor> fornecedors = new ArrayList<>();
+        String sql = "SELECT * FROM  fornecedor";
+        PreparedStatement stmt = null;
+        ResultSet result = null;
+        try {
+            stmt = con.prepareStatement(sql);
+            result = stmt.executeQuery();
+
+            while (result.next()) {
+                Fornecedor fornecedor = new Fornecedor();
+                fornecedor.setId(result.getInt("id"));
+                fornecedor.setRazaoSocial(result.getString("razaoSocial"));
+                fornecedor.setCnpj(result.getString("cnpj"));
+                fornecedor.setEndereco(result.getString("endereco"));
+                fornecedor.setRecorrente(result.getBoolean("recorrente"));
+                fornecedors.add(fornecedor);
+            }
+        } catch (SQLException ex) {
+            System.err.println("Erro ao tentar buscar dados no banco" + ex);
+        } finally {
+            ConnectionFactory.closeConnetion(con, stmt, result);
+        }
+        return fornecedors;
+    }
+
+    @Override
+    public boolean delete(Fornecedor fornecedor) {
+        String sql = "DELETE FROM fornecedor WHERE id = ?";
+        PreparedStatement stmt = null;
+        try {
+            stmt = con.prepareStatement(sql);
+            stmt.setInt(1, fornecedor.getId());
+            stmt.executeUpdate();
             return true;
         } catch (SQLException ex) {
-            System.err.println("Erro ao tentar gravar dados no banco"+ ex);
+            System.err.println("Erro ao tentar gravar dados no banco" + ex);
         } finally {
             ConnectionFactory.closeConnetion(con, stmt);
         }
@@ -115,35 +106,31 @@ public class FornecedorDAOImp implements IBaseDAO<Cliente> {
     }
 
     @Override
-    public Cliente findById(Integer id) {
-       Cliente cliente =  new Cliente();
-       String sql = "SELECT * FROM  cliente WHERE id = ?";
-       PreparedStatement stmt = null;    
-       ResultSet result = null ;
+    public Fornecedor findById(Integer id) {
+        Fornecedor fornecedor = new Fornecedor();
+        String sql = "SELECT * FROM  fornecedor WHERE id = ?";
+        PreparedStatement stmt = null;
+        ResultSet result = null;
         try {
-          if(id != null) {  
-          stmt = con.prepareStatement(sql);
-          stmt.setInt(1, id);
-          result = stmt.executeQuery();   
-          
-            while(result.next()){           
-                cliente.setId(result.getInt("id"));
-                cliente.setNome(result.getString("nome"));
-                cliente.setCpf(result.getString("cpf"));
-                cliente.setEndereco(result.getString("endereco"));
-                cliente.setTelefone(result.getString("telefone"));
+            if (id != null) {
+                stmt = con.prepareStatement(sql);
+                stmt.setInt(1, id);
+                result = stmt.executeQuery();
 
-                Integer tipoId = result.getObject("tipoCartaoFidelidade", Integer.class);
-                if(tipoId != null){
-                    cliente.setTipoCartaoFidelidade(TipoCartaoFidelidade.values()[tipoId]);          
-                 }
-               }            
-            }  
-         } catch (SQLException ex){
-             System.err.println("Erro ao tentar buscar dados no banco"+ ex);
-         } finally {
+                while (result.next()) {
+                    fornecedor.setId(result.getInt("id"));
+                    fornecedor.setId(result.getInt("id"));
+                    fornecedor.setRazaoSocial(result.getString("razaoSocial"));
+                    fornecedor.setCnpj(result.getString("cnpj"));
+                    fornecedor.setEndereco(result.getString("endereco"));
+                    fornecedor.setRecorrente(result.getBoolean("recorrente"));
+                }
+            }
+        } catch (SQLException ex) {
+            System.err.println("Erro ao tentar buscar dados no banco" + ex);
+        } finally {
             ConnectionFactory.closeConnetion(con, stmt, result);
         }
-        return cliente;
-    }   
+        return fornecedor;
+    }
 }
