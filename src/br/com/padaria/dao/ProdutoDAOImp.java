@@ -151,16 +151,16 @@ public class ProdutoDAOImp implements IBaseDAO<Produto> {
           result = stmt.executeQuery();   
           
             while(result.next()){           
-//                cliente.setId(result.getInt("id"));
-//                cliente.setNome(result.getString("nome"));
-//                cliente.setCpf(result.getString("cpf"));
-//                cliente.setEndereco(result.getString("endereco"));
-//                cliente.setTelefone(result.getString("telefone"));
-
-                Integer tipoId = result.getObject("tipoCartaoFidelidade", Integer.class);
-//                if(tipoId != null){
-//                    cliente.setTipoCartaoFidelidade(TipoCartaoFidelidade.values()[tipoId]);          
-//                 }
+               produto.setId(result.getInt("id"));
+               produto.setCodigo(result.getString("codigo"));
+               produto.setApelido(result.getString("appelido"));
+               produto.setPrecoCusto(result.getDouble("precoCusto"));
+               produto.setPrecoFinal(result.getDouble("precoFinal"));               
+  //             produto.setFornecedor(BuildFornecedor(result.getInt("fornecedor_id")));               
+               Integer tipoId = result.getObject("tipoAlimento", Integer.class);
+               if(tipoId != null && tipoId != 0){
+                   produto.setTipoAlimento(TipoAlimento.values()[tipoId]);          
+               }          
                }            
             }  
          } catch (SQLException ex){

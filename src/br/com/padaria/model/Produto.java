@@ -7,7 +7,7 @@ import java.util.Date;
  *
  * @author luisp
  */
-public class Produto extends BaseEntity{
+public class Produto extends BaseEntity {
     
     private String codigo;
     

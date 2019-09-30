@@ -7,20 +7,20 @@ import java.util.List;
  *
  * @author luisp
  */
-public class Estoque {
+public class Estoque extends BaseEntity {
 
-    private List<Produto> produtos = new ArrayList<>();
+    private Produto produto;
     
     private Integer unidade;
     
     private Integer TipoProduto;
 
-    public List<Produto> getProdutos() {
-        return produtos;
+    public Produto getProduto() {
+        return produto;
     }
 
-    public void setProdutos(List<Produto> produtos) {
-        this.produtos = produtos;
+    public void setProduto(Produto produto) {
+        this.produto = produto;
     }
 
     public Integer getUnidade() {

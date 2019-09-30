@@ -1,23 +1,12 @@
 package br.com.padaria.model;
 
-import br.com.padaria.domain.FormaPagamento;
-
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.sql.Date;
 
 /**
  *
- * @author luisp
- * 
- *      `cliente_id` INT(11) NULL DEFAULT NULL,
-	`funcionario_id` INT(11) NULL DEFAULT NULL,
-	`caixa_id` INT(11) NULL DEFAULT NULL,
-        `dataVenda` DATE NULL DEFAULT NULL,
- * 
- * 
+ * @author ltavares
  */
-public abstract class Venda extends BaseEntity{
+public class Venda extends BaseEntity{
      
     private Date dataVenda;  
     
@@ -25,12 +14,15 @@ public abstract class Venda extends BaseEntity{
     
     private Cliente cliente;
     
+    private Caixa caixa;
+    
     double totalVenda;
 
-    public Venda(Date dataVenda, Funcionario funcionario, Cliente cliente, double totalVenda) {
+    public Venda(Date dataVenda, Funcionario funcionario, Cliente cliente, Caixa caixa, double totalVenda) {
         this.dataVenda = dataVenda;
         this.funcionario = funcionario;
         this.cliente = cliente;
+        this.caixa = caixa;
         this.totalVenda = totalVenda;
     }
 
@@ -67,5 +59,13 @@ public abstract class Venda extends BaseEntity{
 
     public void setTotalVenda(double totalVenda) {
         this.totalVenda = totalVenda;
+    }
+
+    public Caixa getCaixa() {
+        return caixa;
+    }
+
+    public void setCaixa(Caixa caixa) {
+        this.caixa = caixa;
     }
 }
