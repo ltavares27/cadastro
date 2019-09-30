@@ -97,21 +97,17 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace pref="4" max="-2" attributes="0"/>
-                          <Component id="textRazaoSocial" min="-2" pref="571" max="-2" attributes="0"/>
-                      </Group>
                       <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace pref="4" max="-2" attributes="0"/>
-                          <Component id="textEndereco" min="-2" pref="571" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace pref="4" max="-2" attributes="0"/>
-                          <Component id="labelCnpj" min="-2" max="-2" attributes="0"/>
-                      </Group>
                       <Component id="jRadioRecorrente" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="jFormattedTextFieldCnpj" alignment="0" min="-2" pref="168" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="textRazaoSocial" alignment="0" min="-2" pref="571" max="-2" attributes="0"/>
+                              <Component id="textEndereco" alignment="0" min="-2" pref="571" max="-2" attributes="0"/>
+                              <Component id="labelCnpj" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
                   </Group>
                   <EmptySpace pref="21" max="32767" attributes="0"/>
               </Group>

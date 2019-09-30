@@ -39,11 +39,13 @@ public class Fornecedor extends BaseEntity {
         this.cnpj = cnpj;
     }
 
-    public boolean isRecorrente() {
+    public boolean getRecorrente() {
         return recorrente;
     }
 
     public void setRecorrente(boolean recorrente) {
         this.recorrente = recorrente;
     }
+    
+    
 }

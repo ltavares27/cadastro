@@ -1,5 +1,6 @@
 package br.com.padaria.view.register;
 
+import br.com.padaria.dao.FornecedorDAOImp;
 import br.com.padaria.model.Fornecedor;
 import javax.swing.JOptionPane;
 
@@ -9,6 +10,7 @@ import javax.swing.JOptionPane;
  */
 public class TelaCadastroFornecedor extends javax.swing.JFrame {
 
+    FornecedorDAOImp fornecedorDao = new FornecedorDAOImp();
     /**
      * Creates new form TelaCadastroFornecedor
      */
@@ -158,19 +160,23 @@ public class TelaCadastroFornecedor extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonSalvarFornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarFornecedorActionPerformed
+      try {
         if(!validaPreenchimentoFormularioFornecedor()){
            Fornecedor fornecedor = preencheFornecedor();
            if (fornecedor != null) {
-              //TODO implementar a DAO para persistencia dos dados 
-           }
-            JOptionPane.showMessageDialog(null,"Fornecedor Cadastro com sucesso!");
-            
-        }
-        
+             fornecedorDao.save(fornecedor);
+             JOptionPane.showMessageDialog(null,"Fornecedor Cadastro com sucesso!");
+             limpparCampos();
+           }            
+         }
+        } catch (Exception e){
+           JOptionPane.showMessageDialog(null,"Ocorreu um erro ao tentar salvar dados no banco."); 
+          e.printStackTrace();
+        }        
     }//GEN-LAST:event_jButtonSalvarFornecedorActionPerformed
 
     private void jButtonFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFecharActionPerformed
-        // TODO add your handling code here:
+        this.dispose();
     }//GEN-LAST:event_jButtonFecharActionPerformed
 
     /**
@@ -209,8 +215,7 @@ public class TelaCadastroFornecedor extends javax.swing.JFrame {
     }
     
     public Fornecedor preencheFornecedor(){
-      Fornecedor fornecedor = new Fornecedor();
-      
+      Fornecedor fornecedor = new Fornecedor();      
       fornecedor.setCnpj(jFormattedTextFieldCnpj.getText());
       fornecedor.setEndereco(textEndereco.getText());
       fornecedor.setRazaoSocial(textRazaoSocial.getText());
@@ -221,6 +226,16 @@ public class TelaCadastroFornecedor extends javax.swing.JFrame {
       }
       return fornecedor;
     }
+    
+    public void limpparCampos(){
+      jFormattedTextFieldCnpj.setText(null);
+      textEndereco.setText(null);
+      textEndereco.setText(null);
+      textRazaoSocial.setText(null);
+      jRadioRecorrente.setText("0");
+    }
+    
+    
     
     public boolean validaPreenchimentoFormularioFornecedor(){
        if(textRazaoSocial.getText().isEmpty()) {

@@ -9,7 +9,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
+/*d*
  *
  * @author ltavares
  */
@@ -30,7 +30,7 @@ public class FornecedorDAOImp implements IBaseDAO<Fornecedor> {
             stmt.setString(1, fornecedor.getRazaoSocial());
             stmt.setString(2, fornecedor.getCnpj());
             stmt.setString(3, fornecedor.getEndereco());
-            stmt.setBoolean(4, fornecedor.isRecorrente());
+            stmt.setBoolean(4, fornecedor.getRecorrente());
             stmt.executeUpdate();
         } catch (SQLException ex) {
             System.err.println("Erro ao tentar gravar dados no banco " + ex);
@@ -51,7 +51,7 @@ public class FornecedorDAOImp implements IBaseDAO<Fornecedor> {
             stmt.setString(1, fornecedor.getRazaoSocial());
             stmt.setString(2, fornecedor.getCnpj());
             stmt.setString(3, fornecedor.getEndereco());
-            stmt.setBoolean(4, fornecedor.isRecorrente());
+            stmt.setBoolean(4, fornecedor.getRecorrente());
             stmt.executeUpdate();
         } catch (SQLException ex) {
             System.err.println("Erro ao tentar gravar dados no banco " + ex);
@@ -63,8 +63,7 @@ public class FornecedorDAOImp implements IBaseDAO<Fornecedor> {
 
     @Override
     public List<Fornecedor> findAll() {
-        List<Fornecedor> fornecedors = new ArrayList<>();
-        Fornecedor fornecedor = new Fornecedor();
+        List<Fornecedor> fornecedores = new ArrayList<>();
         String sql = "SELECT * FROM  fornecedor";
         PreparedStatement stmt = null;
         ResultSet result = null;
@@ -73,19 +72,20 @@ public class FornecedorDAOImp implements IBaseDAO<Fornecedor> {
             result = stmt.executeQuery();
 
             while (result.next()) {
+                Fornecedor fornecedor = new Fornecedor();
                 fornecedor.setId(result.getInt("id"));
                 fornecedor.setRazaoSocial(result.getString("razaoSocial"));
                 fornecedor.setCnpj(result.getString("cnpj"));
                 fornecedor.setEndereco(result.getString("endereco"));
                 fornecedor.setRecorrente(result.getBoolean("recorrente"));
-                fornecedors.add(fornecedor);
+                fornecedores.add(fornecedor);
             }
         } catch (SQLException ex) {
             System.err.println("Erro ao tentar buscar dados no banco" + ex);
         } finally {
             ConnectionFactory.closeConnetion(con, stmt, result);
         }
-        return fornecedors;
+        return fornecedores;
     }
 
     @Override
