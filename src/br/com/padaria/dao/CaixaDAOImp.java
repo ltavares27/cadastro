@@ -1,8 +1,9 @@
 package br.com.padaria.dao;
 
 import br.com.padaria.connection.ConnectionFactory;
-import br.com.padaria.domain.TipoCartaoFidelidade;
-import br.com.padaria.model.Cliente;
+import br.com.padaria.domain.FormaPagamento;
+import br.com.padaria.model.Caixa;
+import br.com.padaria.model.Produto;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -13,8 +14,25 @@ import java.util.List;
 /**
  *
  * @author ltavares
+ * 
+ * CREATE TABLE `caixa` (
+	`id` INT(11) NOT NULL AUTO_INCREMENT,
+	`produto_id` INT(11) NULL DEFAULT NULL,
+	`quantidadeProduto` INT(11) NULL DEFAULT NULL,
+        `subTotalPorProduto` FLOAT(11) NULL DEFAULT NULL,
+        `subTotalAPagar` FLOAT(11) NULL DEFAULT NULL,
+        `totalAPagar` FLOAT(11) NULL DEFAULT NULL,
+        `formaPagamento` TINYINT NULL DEFAULT NULL,
+        `parcelas` INT(11) NULL DEFAULT NULL,
+	 PRIMARY KEY (`id`)
+   )
+
+ * 
+ * 
  */
-public class CaixaDAOImp implements IBaseDAO<Cliente> {
+public class CaixaDAOImp implements IBaseDAO<Caixa> {
+    
+    private ProdutoDAOImp produtoDAO = new ProdutoDAOImp();
     
     private Connection con = null;
 
@@ -23,52 +41,59 @@ public class CaixaDAOImp implements IBaseDAO<Cliente> {
     }
   
     @Override
-    public Cliente save(Cliente cliente) {
-        String sql = "INSERT INTO cliente (nome, cpf, telefone, endereco, tipoCartaoFidelidade) VALUES (?, ?, ?, ?, ?)";
+    public Caixa save(Caixa caixa) {
+        String sql = "INSERT INTO caixa (produto_id, quantidadeProduto, subTotalPorProduto, subTotalAPagar, totalAPagar, formaPagamento, parcelas) "
+                +    " VALUES (?, ?, ?, ?, ?, ?, ?)";
         PreparedStatement stmt = null;        
         try {
             stmt = con.prepareStatement(sql);  
-            stmt.setString(1, cliente.getNome());
-            stmt.setString(2, cliente.getCpf());
-            stmt.setString(3, cliente.getTelefone());
-            stmt.setString(4, cliente.getEndereco());
-            stmt.setObject(5, cliente.getTipoCartaoFidelidade());
+            stmt.setObject(1, caixa.getProduto());
+            stmt.setInt(2, caixa.getQuantidadeProduto());
+            stmt.setDouble(3, caixa.getSubTotalPorProduto());
+            stmt.setDouble(4, caixa.getSubTotalAPagar());
+            stmt.setDouble(5, caixa.getTotalAPagar());
+            stmt.setObject(6, caixa.getFormaPagamento());
+            stmt.setInt(7, caixa.getParcelas());
             stmt.executeUpdate();            
         } catch (SQLException ex) {
             System.err.println("Erro ao tentar gravar dados no banco"+ ex);
         } finally {
             ConnectionFactory.closeConnetion(con, stmt);
         }
-        return cliente;
+        return caixa;
     }
 
     @Override
-    public Cliente update(Cliente cliente) {
+    public Caixa update(Caixa caixa) {
         Connection con = ConnectionFactory.getConnetion();
-        String sql = "UPDATE cliente SET nome = ?, cpf = ? , telefone = ?, endereco = ?, tipoCartaoFidelidade = ?  "
-                   + "WHERE id = ?";
+        String sql = "UPDATE caixa SET produto_id = ?, quantidadeProduto = ?, subTotalPorProduto = ?, subTotalAPagar = ?, totalAPagar = ?,"
+                + " formaPagamento = ?, parcelas = ? "
+                + " WHERE id = ?";
         PreparedStatement stmt = null;        
         try {
             stmt = con.prepareStatement(sql);     
-            stmt.setString(1, cliente.getNome());
-            stmt.setString(2, cliente.getCpf());   
-            stmt.setString(3, cliente.getTelefone());                    
-            stmt.setString(4, cliente.getEndereco());
-            stmt.setObject(5, cliente.getTipoCartaoFidelidade());
-            stmt.setInt(6, cliente.getId());
+            stmt.setObject(1, caixa.getProduto());
+            stmt.setInt(2, caixa.getQuantidadeProduto());
+            stmt.setDouble(3, caixa.getSubTotalPorProduto());
+            stmt.setDouble(4, caixa.getSubTotalAPagar());
+            stmt.setDouble(5, caixa.getTotalAPagar());
+            stmt.setObject(6, caixa.getFormaPagamento());
+            stmt.setInt(7, caixa.getParcelas());
+            stmt.setInt(8, caixa.getId());
             stmt.executeUpdate();            
         } catch (SQLException ex) {
             System.err.println("Erro ao tentar gravar dados no banco "+ ex);
         } finally {
             ConnectionFactory.closeConnetion(con, stmt);
         }
-        return cliente;
+        return caixa;
     }
 
     @Override
-    public List<Cliente> findAll() {
-       List<Cliente> clientes =  new ArrayList<>();
-       String sql = "SELECT * FROM  cliente";
+    public List<Caixa> findAll() {
+       List<Caixa> caixas =  new ArrayList<>();
+       Caixa caixa = new Caixa();
+       String sql = "SELECT * FROM  caixa";
        PreparedStatement stmt = null;    
        ResultSet result = null ;
         try {
@@ -76,34 +101,39 @@ public class CaixaDAOImp implements IBaseDAO<Cliente> {
           result = stmt.executeQuery();
           
             while(result.next()){
-               Cliente cliente = new Cliente();
-               cliente.setId(result.getInt("id"));
-               cliente.setNome(result.getString("nome"));
-               cliente.setCpf(result.getString("cpf"));
-               cliente.setEndereco(result.getString("endereco"));
-               cliente.setTelefone(result.getString("telefone"));
+              
+               caixa.setId(result.getInt("id"));               
+               Integer IdProduto = result.getObject("produto_id", Integer.class);
+               if(IdProduto != null && IdProduto != 0){
+                   Produto produto = produtoDAO.findById(IdProduto);
+               }              
+               caixa.setQuantidadeProduto(result.getInt("quantidadeProduto"));
+               caixa.setSubTotalPorProduto(result.getDouble("subTotalPorProduto"));
+               caixa.setSubTotalAPagar(result.getDouble("subTotalAPagar"));
+               caixa.setTotalAPagar(result.getDouble("totalAPagar"));
+               caixa.setParcelas(result.getInt("parcelas"));
                
-               Integer tipoId = result.getObject("tipoCartaoFidelidade", Integer.class);
+               Integer tipoId = result.getObject("formaPagamento", Integer.class);
                if(tipoId != null && tipoId != 0){
-                   cliente.setTipoCartaoFidelidade(TipoCartaoFidelidade.values()[tipoId]);          
-               }          
-               clientes.add(cliente);
+                   caixa.setFormaPagamento(FormaPagamento.values()[tipoId]);          
+               }            
+               caixas.add(caixa);
             }  
          } catch (SQLException ex){
              System.err.println("Erro ao tentar buscar dados no banco"+ ex);
          } finally {
             ConnectionFactory.closeConnetion(con, stmt, result);
         }
-        return clientes;
+        return caixas;
     }
 
     @Override
-    public boolean delete(Cliente cliente) {
-        String sql = "DELETE FROM cliente WHERE id = ?";
+    public boolean delete(Caixa caixa) {
+        String sql = "DELETE FROM caixa WHERE id = ?";
         PreparedStatement stmt = null;        
         try {
             stmt = con.prepareStatement(sql);
-            stmt.setInt(1, cliente.getId());
+            stmt.setInt(1, caixa.getId());
             stmt.executeUpdate();     
             return true;
         } catch (SQLException ex) {
@@ -115,35 +145,39 @@ public class CaixaDAOImp implements IBaseDAO<Cliente> {
     }
 
     @Override
-    public Cliente findById(Integer id) {
-       Cliente cliente =  new Cliente();
-       String sql = "SELECT * FROM  cliente WHERE id = ?";
+    public Caixa findById(Integer id) {
+       Caixa caixa =  new Caixa();
+       String sql = "SELECT * FROM caixa WHERE id = ?";
        PreparedStatement stmt = null;    
        ResultSet result = null ;
         try {
           if(id != null) {  
-          stmt = con.prepareStatement(sql);
-          stmt.setInt(1, id);
-          result = stmt.executeQuery();   
-          
+            stmt = con.prepareStatement(sql);
+            stmt.setInt(1, id);
+            result = stmt.executeQuery(); 
+          }          
             while(result.next()){           
-                cliente.setId(result.getInt("id"));
-                cliente.setNome(result.getString("nome"));
-                cliente.setCpf(result.getString("cpf"));
-                cliente.setEndereco(result.getString("endereco"));
-                cliente.setTelefone(result.getString("telefone"));
+                caixa.setId(result.getInt("id"));               
+                 Integer IdProduto = result.getObject("produto_id", Integer.class);
+                 if(IdProduto != null && IdProduto != 0){
+                     Produto produto = produtoDAO.findById(IdProduto);
+                 }              
+                 caixa.setQuantidadeProduto(result.getInt("quantidadeProduto"));
+                 caixa.setSubTotalPorProduto(result.getDouble("subTotalPorProduto"));
+                 caixa.setSubTotalAPagar(result.getDouble("subTotalAPagar"));
+                 caixa.setTotalAPagar(result.getDouble("totalAPagar"));
+                 caixa.setParcelas(result.getInt("parcelas"));
 
-                Integer tipoId = result.getObject("tipoCartaoFidelidade", Integer.class);
-                if(tipoId != null){
-                    cliente.setTipoCartaoFidelidade(TipoCartaoFidelidade.values()[tipoId]);          
-                 }
-               }            
-            }  
+                 Integer tipoId = result.getObject("formaPagamento", Integer.class);
+                 if(tipoId != null && tipoId != 0){
+                     caixa.setFormaPagamento(FormaPagamento.values()[tipoId]);          
+                 }       
+            } 
          } catch (SQLException ex){
              System.err.println("Erro ao tentar buscar dados no banco"+ ex);
          } finally {
             ConnectionFactory.closeConnetion(con, stmt, result);
-        }
-        return cliente;
-    }   
+         }
+         return caixa;
+       }   
 }

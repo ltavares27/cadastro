@@ -10,8 +10,6 @@ import java.util.List;
  *
  * @author luisp
  * 
- * 
- * 
  *      `cliente_id` INT(11) NULL DEFAULT NULL,
 	`funcionario_id` INT(11) NULL DEFAULT NULL,
 	`caixa_id` INT(11) NULL DEFAULT NULL,
@@ -19,7 +17,7 @@ import java.util.List;
  * 
  * 
  */
-public abstract class Venda {
+public abstract class Venda extends BaseEntity{
      
     private Date dataVenda;  
     
@@ -35,6 +33,9 @@ public abstract class Venda {
         this.cliente = cliente;
         this.totalVenda = totalVenda;
     }
+
+    public Venda() {
+    }  
 
     public Date getDataVenda() {
         return dataVenda;
@@ -67,11 +68,4 @@ public abstract class Venda {
     public void setTotalVenda(double totalVenda) {
         this.totalVenda = totalVenda;
     }
-    
-    
-    
-
-   
-
-
 }

@@ -2,7 +2,6 @@ package br.com.padaria.model;
 
 import br.com.padaria.domain.FormaPagamento;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -25,8 +24,10 @@ public class Caixa extends Venda {
     private double totalAPagar;    
     
     private List<Produto> produtos = new ArrayList<>();
+    
+    private Produto produto;
 
-    public Caixa(Integer quantidadeProduto, double subTotalPorProduto, FormaPagamento formaPagamento, Integer parcelas, double subTotalAPagar, double totalAPagar, Date dataVenda, Funcionario funcionario, Cliente cliente, double totalVenda) {
+    public Caixa(Integer quantidadeProduto, double subTotalPorProduto, FormaPagamento formaPagamento, Integer parcelas, double subTotalAPagar, double totalAPagar, Produto produto, Date dataVenda, Funcionario funcionario, Cliente cliente, double totalVenda) {
         super(dataVenda, funcionario, cliente, totalVenda);
         this.quantidadeProduto = quantidadeProduto;
         this.subTotalPorProduto = subTotalPorProduto;
@@ -34,7 +35,16 @@ public class Caixa extends Venda {
         this.parcelas = parcelas;
         this.subTotalAPagar = subTotalAPagar;
         this.totalAPagar = totalAPagar;
+        this.produto = produto;
+    } 
+
+    public Caixa(Date dataVenda, Funcionario funcionario, Cliente cliente, double totalVenda) {
+        super(dataVenda, funcionario, cliente, totalVenda);
     }
+    
+    public Caixa(){}
+
+   
 
     public Integer getQuantidadeProduto() {
         return quantidadeProduto;
@@ -91,8 +101,12 @@ public class Caixa extends Venda {
     public void setProdutos(List<Produto> produtos) {
         this.produtos = produtos;
     }
-    
-    
-    
-   
+
+    public Produto getProduto() {
+        return produto;
+    }
+
+    public void setProduto(Produto produto) {
+        this.produto = produto;
+    }
 }

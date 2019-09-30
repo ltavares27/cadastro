@@ -1,8 +1,7 @@
 package br.com.padaria.dao;
 
 import br.com.padaria.connection.ConnectionFactory;
-import br.com.padaria.domain.TipoCartaoFidelidade;
-import br.com.padaria.model.Cliente;
+import br.com.padaria.model.Produto;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,7 +13,7 @@ import java.util.List;
  *
  * @author ltavares
  */
-public class ProdutoDAOImp implements IBaseDAO<Cliente> {
+public class ProdutoDAOImp implements IBaseDAO<Produto> {
     
     private Connection con = null;
 
@@ -23,51 +22,51 @@ public class ProdutoDAOImp implements IBaseDAO<Cliente> {
     }
   
     @Override
-    public Cliente save(Cliente cliente) {
+    public Produto save(Produto produto) {
         String sql = "INSERT INTO cliente (nome, cpf, telefone, endereco, tipoCartaoFidelidade) VALUES (?, ?, ?, ?, ?)";
         PreparedStatement stmt = null;        
         try {
             stmt = con.prepareStatement(sql);  
-            stmt.setString(1, cliente.getNome());
-            stmt.setString(2, cliente.getCpf());
-            stmt.setString(3, cliente.getTelefone());
-            stmt.setString(4, cliente.getEndereco());
-            stmt.setObject(5, cliente.getTipoCartaoFidelidade());
+//            stmt.setString(1, cliente.getNome());
+//            stmt.setString(2, cliente.getCpf());
+//            stmt.setString(3, cliente.getTelefone());
+//            stmt.setString(4, cliente.getEndereco());
+//            stmt.setObject(5, cliente.getTipoCartaoFidelidade());
             stmt.executeUpdate();            
         } catch (SQLException ex) {
             System.err.println("Erro ao tentar gravar dados no banco"+ ex);
         } finally {
             ConnectionFactory.closeConnetion(con, stmt);
         }
-        return cliente;
+        return produto;
     }
 
     @Override
-    public Cliente update(Cliente cliente) {
+    public Produto update(Produto produto) {
         Connection con = ConnectionFactory.getConnetion();
         String sql = "UPDATE cliente SET nome = ?, cpf = ? , telefone = ?, endereco = ?, tipoCartaoFidelidade = ?  "
                    + "WHERE id = ?";
         PreparedStatement stmt = null;        
         try {
             stmt = con.prepareStatement(sql);     
-            stmt.setString(1, cliente.getNome());
-            stmt.setString(2, cliente.getCpf());   
-            stmt.setString(3, cliente.getTelefone());                    
-            stmt.setString(4, cliente.getEndereco());
-            stmt.setObject(5, cliente.getTipoCartaoFidelidade());
-            stmt.setInt(6, cliente.getId());
+//            stmt.setString(1, cliente.getNome());
+//            stmt.setString(2, cliente.getCpf());   
+//            stmt.setString(3, cliente.getTelefone());                    
+//            stmt.setString(4, cliente.getEndereco());
+//            stmt.setObject(5, cliente.getTipoCartaoFidelidade());
+//            stmt.setInt(6, cliente.getId());
             stmt.executeUpdate();            
         } catch (SQLException ex) {
             System.err.println("Erro ao tentar gravar dados no banco "+ ex);
         } finally {
             ConnectionFactory.closeConnetion(con, stmt);
         }
-        return cliente;
+        return produto;
     }
 
     @Override
-    public List<Cliente> findAll() {
-       List<Cliente> clientes =  new ArrayList<>();
+    public List<Produto> findAll() {
+       List<Produto> produtos =  new ArrayList<>();
        String sql = "SELECT * FROM  cliente";
        PreparedStatement stmt = null;    
        ResultSet result = null ;
@@ -76,34 +75,34 @@ public class ProdutoDAOImp implements IBaseDAO<Cliente> {
           result = stmt.executeQuery();
           
             while(result.next()){
-               Cliente cliente = new Cliente();
-               cliente.setId(result.getInt("id"));
-               cliente.setNome(result.getString("nome"));
-               cliente.setCpf(result.getString("cpf"));
-               cliente.setEndereco(result.getString("endereco"));
-               cliente.setTelefone(result.getString("telefone"));
+              Produto produto = new Produto();
+//               cliente.setId(result.getInt("id"));
+//               cliente.setNome(result.getString("nome"));
+//               cliente.setCpf(result.getString("cpf"));
+//               cliente.setEndereco(result.getString("endereco"));
+//               cliente.setTelefone(result.getString("telefone"));
                
-               Integer tipoId = result.getObject("tipoCartaoFidelidade", Integer.class);
-               if(tipoId != null && tipoId != 0){
-                   cliente.setTipoCartaoFidelidade(TipoCartaoFidelidade.values()[tipoId]);          
-               }          
-               clientes.add(cliente);
+//               Integer tipoId = result.getObject("tipoCartaoFidelidade", Integer.class);
+//               if(tipoId != null && tipoId != 0){
+//                   produto.setTipoCartaoFidelidade(TipoCartaoFidelidade.values()[tipoId]);          
+//               }          
+               produtos.add(produto);
             }  
          } catch (SQLException ex){
              System.err.println("Erro ao tentar buscar dados no banco"+ ex);
          } finally {
             ConnectionFactory.closeConnetion(con, stmt, result);
         }
-        return clientes;
+        return produtos;
     }
 
     @Override
-    public boolean delete(Cliente cliente) {
+    public boolean delete(Produto produto) {
         String sql = "DELETE FROM cliente WHERE id = ?";
         PreparedStatement stmt = null;        
         try {
-            stmt = con.prepareStatement(sql);
-            stmt.setInt(1, cliente.getId());
+//            stmt = con.prepareStatement(sql);
+//            stmt.setInt(1, cliente.getId());
             stmt.executeUpdate();     
             return true;
         } catch (SQLException ex) {
@@ -115,8 +114,8 @@ public class ProdutoDAOImp implements IBaseDAO<Cliente> {
     }
 
     @Override
-    public Cliente findById(Integer id) {
-       Cliente cliente =  new Cliente();
+    public Produto findById(Integer id) {
+       Produto produto =  new Produto();
        String sql = "SELECT * FROM  cliente WHERE id = ?";
        PreparedStatement stmt = null;    
        ResultSet result = null ;
@@ -127,16 +126,16 @@ public class ProdutoDAOImp implements IBaseDAO<Cliente> {
           result = stmt.executeQuery();   
           
             while(result.next()){           
-                cliente.setId(result.getInt("id"));
-                cliente.setNome(result.getString("nome"));
-                cliente.setCpf(result.getString("cpf"));
-                cliente.setEndereco(result.getString("endereco"));
-                cliente.setTelefone(result.getString("telefone"));
+//                cliente.setId(result.getInt("id"));
+//                cliente.setNome(result.getString("nome"));
+//                cliente.setCpf(result.getString("cpf"));
+//                cliente.setEndereco(result.getString("endereco"));
+//                cliente.setTelefone(result.getString("telefone"));
 
                 Integer tipoId = result.getObject("tipoCartaoFidelidade", Integer.class);
-                if(tipoId != null){
-                    cliente.setTipoCartaoFidelidade(TipoCartaoFidelidade.values()[tipoId]);          
-                 }
+//                if(tipoId != null){
+//                    cliente.setTipoCartaoFidelidade(TipoCartaoFidelidade.values()[tipoId]);          
+//                 }
                }            
             }  
          } catch (SQLException ex){
@@ -144,6 +143,6 @@ public class ProdutoDAOImp implements IBaseDAO<Cliente> {
          } finally {
             ConnectionFactory.closeConnetion(con, stmt, result);
         }
-        return cliente;
+        return produto;
     }   
 }
