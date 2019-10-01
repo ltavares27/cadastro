@@ -7,6 +7,7 @@ package br.com.padaria.view.Edit;
 
 import br.com.padaria.dao.FornecedorDAOImp;
 import br.com.padaria.model.Fornecedor;
+import javax.swing.JOptionPane;
 
 
 /**
@@ -17,16 +18,16 @@ public class TelaEditarFornecedor extends javax.swing.JFrame {
     
     private FornecedorDAOImp fornecedorDao = new FornecedorDAOImp();
     
+    private Fornecedor fornecedor = new Fornecedor();
+    
 
     public void carregaTelaEditarCliente(int idFornecedor) {
-        Fornecedor fornecedor = new Fornecedor();
-        fornecedor = fornecedorDao.findById(idFornecedor);
+       fornecedor = fornecedorDao.findById(idFornecedor);
         
         textEndereco.setText(fornecedor.getEndereco());
         textRazaoSocial.setText(fornecedor.getRazaoSocial());
         textcnpj.setText(fornecedor.getCnpj());
-        jRadioRecorrente.setSelected(fornecedor.getRecorrente());
-        
+        jRadioRecorrente.setSelected(fornecedor.getRecorrente());        
     }
 
     /**
@@ -90,27 +91,15 @@ public class TelaEditarFornecedor extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel3))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(textRazaoSocial, javax.swing.GroupLayout.PREFERRED_SIZE, 571, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel4))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(textEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 571, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(labelCnpj, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jRadioRecorrente)
-                            .addComponent(textcnpj, javax.swing.GroupLayout.PREFERRED_SIZE, 571, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(jLabel3)
+                    .addComponent(textRazaoSocial, javax.swing.GroupLayout.PREFERRED_SIZE, 571, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4)
+                    .addComponent(textEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 571, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelCnpj, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jRadioRecorrente)
+                    .addComponent(textcnpj, javax.swing.GroupLayout.PREFERRED_SIZE, 571, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(29, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -137,8 +126,18 @@ public class TelaEditarFornecedor extends javax.swing.JFrame {
         labelCnpj.getAccessibleContext().setAccessibleName("cnpj");
 
         jButtonFechar.setText("Fechar");
+        jButtonFechar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonFecharActionPerformed(evt);
+            }
+        });
 
         jButtonSalvarFornecedor1.setText("Salvar");
+        jButtonSalvarFornecedor1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSalvarFornecedor1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -182,6 +181,25 @@ public class TelaEditarFornecedor extends javax.swing.JFrame {
     private void textcnpjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textcnpjActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_textcnpjActionPerformed
+
+    private void jButtonSalvarFornecedor1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarFornecedor1ActionPerformed
+         if(!textRazaoSocial.getText().isEmpty() 
+                && !textcnpj.getText().isEmpty() 
+                && !textEndereco.getText().isEmpty()) {
+            fornecedor.setRazaoSocial(textRazaoSocial.getText());
+            fornecedor.setCnpj(textcnpj.getText());
+            fornecedor.setEndereco(textEndereco.getText());
+            fornecedor.setRecorrente(jRadioRecorrente.isSelected());                                    
+            fornecedorDao.update(fornecedor);
+             JOptionPane.showMessageDialog(null,"Cadastro atualizado com sucesso!");
+         } else {
+              JOptionPane.showMessageDialog(null,"existem campos que não podem ficar em branco.");
+         }
+    }//GEN-LAST:event_jButtonSalvarFornecedor1ActionPerformed
+
+    private void jButtonFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFecharActionPerformed
+       this.dispose();
+    }//GEN-LAST:event_jButtonFecharActionPerformed
 
     /**
     jPanel1and line arguments

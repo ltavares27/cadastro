@@ -5,11 +5,19 @@
  */
 package br.com.padaria.view.register;
 
+import br.com.padaria.dao.FuncionarioDAOImp;
+import br.com.padaria.model.Fornecedor;
+import br.com.padaria.model.Funcionario;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author luisp
  */
 public class TelaCadastroFuncionario extends javax.swing.JFrame {
+    
+    FuncionarioDAOImp funcionarioDao = new FuncionarioDAOImp();
+    
 
     /**
      * Creates new form TelaCadastroFuncionario
@@ -31,7 +39,7 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
         CPF = new javax.swing.JPanel();
         jLabelNomeFuncionario = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextPaneFuncionario = new javax.swing.JTextPane();
+        jTextNomeFuncionario = new javax.swing.JTextPane();
         jLabel2 = new javax.swing.JLabel();
         jTextFieldEnderecoFuncionario = new javax.swing.JTextField();
         jLabelCpf = new javax.swing.JLabel();
@@ -41,8 +49,7 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
         jLabelSalario = new javax.swing.JLabel();
         jTextFieldSalario = new javax.swing.JTextField();
         jLabelCargo = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jListCargo = new javax.swing.JList<>();
+        jComboBoxCargo = new javax.swing.JComboBox<>();
         jButtonFechar = new javax.swing.JButton();
         jButtonSalvarFuncionario = new javax.swing.JButton();
 
@@ -59,7 +66,7 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
         jLabelNomeFuncionario.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabelNomeFuncionario.setText("Nome");
 
-        jScrollPane1.setViewportView(jTextPaneFuncionario);
+        jScrollPane1.setViewportView(jTextNomeFuncionario);
 
         jLabel2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel2.setText("Endereço");
@@ -82,13 +89,8 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
         jLabelCargo.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabelCargo.setText("Cargo");
 
-        jListCargo.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jListCargo.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Selecione um cargo", "Vendedor", "Gerente", "Padeiro" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane2.setViewportView(jListCargo);
+        jComboBoxCargo.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jComboBoxCargo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione um Cargo", "Gerente", "Padeito", "Vendedor" }));
 
         javax.swing.GroupLayout CPFLayout = new javax.swing.GroupLayout(CPF);
         CPF.setLayout(CPFLayout);
@@ -104,16 +106,16 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
                         .addComponent(jTextFieldEnderecoFuncionario)
                         .addComponent(jLabelCpf)
                         .addComponent(jTextFieldCpfFuncionario)
-                        .addComponent(jLabelTelefone)
-                        .addComponent(jTextFieldTelefoneFuncionario))
+                        .addComponent(jLabelTelefone))
                     .addGroup(CPFLayout.createSequentialGroup()
-                        .addGroup(CPFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelSalario)
-                            .addComponent(jTextFieldSalario, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(CPFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jTextFieldTelefoneFuncionario, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)
+                            .addComponent(jLabelSalario, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextFieldSalario, javax.swing.GroupLayout.Alignment.LEADING))
                         .addGap(44, 44, 44)
                         .addGroup(CPFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabelCargo)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jComboBoxCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(16, Short.MAX_VALUE))
         );
         CPFLayout.setVerticalGroup(
@@ -140,12 +142,10 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
                     .addComponent(jLabelSalario)
                     .addComponent(jLabelCargo))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(CPFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addGroup(CPFLayout.createSequentialGroup()
-                        .addComponent(jTextFieldSalario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addGap(140, 140, 140))
+                .addGroup(CPFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextFieldSalario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBoxCargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(205, 205, 205))
         );
 
         jButtonFechar.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
@@ -153,6 +153,11 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
 
         jButtonSalvarFuncionario.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jButtonSalvarFuncionario.setText("Salvar");
+        jButtonSalvarFuncionario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSalvarFuncionarioActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -184,12 +189,28 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
                 .addComponent(CPF, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jLabel1)
-                .addGap(0, 323, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonSalvarFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarFuncionarioActionPerformed
+          try {
+        if(!validaPreenchimentoFormulario()){
+           Funcionario funcionario = preencheFormulario();
+           if (funcionario != null) {
+             funcionarioDao.save(funcionario);
+             JOptionPane.showMessageDialog(null,"Funcionario Cadastro com sucesso!");
+             limpparCampos();
+           }            
+         }
+        } catch (Exception e){
+           JOptionPane.showMessageDialog(null,"Ocorreu um erro ao tentar salvar dados no banco."); 
+          e.printStackTrace();
+        }        
+    }//GEN-LAST:event_jButtonSalvarFuncionarioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -230,6 +251,7 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
     private javax.swing.JPanel CPF;
     private javax.swing.JButton jButtonFechar;
     private javax.swing.JButton jButtonSalvarFuncionario;
+    private javax.swing.JComboBox<String> jComboBoxCargo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabelCargo;
@@ -237,13 +259,56 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelNomeFuncionario;
     private javax.swing.JLabel jLabelSalario;
     private javax.swing.JLabel jLabelTelefone;
-    private javax.swing.JList<String> jListCargo;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField jTextFieldCpfFuncionario;
     private javax.swing.JTextField jTextFieldEnderecoFuncionario;
     private javax.swing.JTextField jTextFieldSalario;
     private javax.swing.JTextField jTextFieldTelefoneFuncionario;
-    private javax.swing.JTextPane jTextPaneFuncionario;
+    private javax.swing.JTextPane jTextNomeFuncionario;
     // End of variables declaration//GEN-END:variables
+
+    private Funcionario preencheFormulario() {
+       Funcionario funcionario = new Funcionario();
+       funcionario.setNome(jTextNomeFuncionario.getText());
+       funcionario.setCpf(jTextFieldCpfFuncionario.getText());
+       funcionario.setEndereco(jTextFieldEnderecoFuncionario.getText());
+       funcionario.setTelefone(jTextFieldTelefoneFuncionario.getText());
+       
+       jComboBoxCargo.getSelectedItem();
+       
+       
+ //      funcionario.setCargo(jListCargo);
+       funcionario.setSalario(Double.valueOf(jTextFieldSalario.getText()));
+       
+       return funcionario;
+       
+    }
+
+    private boolean validaPreenchimentoFormulario() {
+         if(jTextNomeFuncionario.getText().isEmpty()) {
+           JOptionPane.showMessageDialog(null,"Informe o nome do Funcionario.");
+           return true;
+       }
+       if(jTextFieldCpfFuncionario.getText().isEmpty()) {
+          JOptionPane.showMessageDialog(null,"Informe o CPF do Funcionario. ");
+          return true;
+       } 
+       if(jTextFieldEnderecoFuncionario.getText().isEmpty()) {
+          JOptionPane.showMessageDialog(null,"Informe o endereço do funcionario.");
+          return true;
+       }        
+       if(jTextFieldTelefoneFuncionario.getText().isEmpty()) {
+          JOptionPane.showMessageDialog(null,"Informe o telefone do funcionario.");
+          return true;
+       }        
+       if(jTextFieldSalario.getText().isEmpty()) {
+          JOptionPane.showMessageDialog(null,"Informe o salário do funcionario.");
+          return true;
+       }        
+       return false;
+    }
+
+    private void limpparCampos() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

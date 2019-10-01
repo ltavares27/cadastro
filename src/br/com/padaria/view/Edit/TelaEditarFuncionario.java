@@ -5,6 +5,8 @@
  */
 package br.com.padaria.view.Edit;
 
+import br.com.padaria.model.Fornecedor;
+import br.com.padaria.model.Funcionario;
 import br.com.padaria.view.detail.*;
 
 /**
@@ -12,6 +14,8 @@ import br.com.padaria.view.detail.*;
  * @author luisp
  */
 public class TelaEditarFuncionario extends javax.swing.JFrame {
+    
+    private Funcionario funcionario = new Funcionario();
 
     /**
      * Creates new form TelaCadastroFuncionario
@@ -45,15 +49,16 @@ public class TelaEditarFuncionario extends javax.swing.JFrame {
         jLabelCargo = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jListCargo = new javax.swing.JList<>();
-        jButtonSalvarFuncionario = new javax.swing.JButton();
+        jButtonFechar = new javax.swing.JButton();
+        jButtonSalvarFuncionario1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Tela de Detalhes de Funcionario");
+        setTitle("Tela de Editar de Funcionario");
         setResizable(false);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/funcionario.png"))); // NOI18N
 
-        CPF.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Cadastro Funcionário", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 12))); // NOI18N
+        CPF.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Editar Funcionário", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 12))); // NOI18N
         CPF.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
 
         jLabelNomeFuncionario.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
@@ -90,39 +95,31 @@ public class TelaEditarFuncionario extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(jListCargo);
 
-        jButtonSalvarFuncionario.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jButtonSalvarFuncionario.setText("Salvar");
-
         javax.swing.GroupLayout CPFLayout = new javax.swing.GroupLayout(CPF);
         CPF.setLayout(CPFLayout);
         CPFLayout.setHorizontalGroup(
             CPFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(CPFLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(CPFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(CPFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jLabelNomeFuncionario)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 590, Short.MAX_VALUE)
+                        .addComponent(jLabel2)
+                        .addComponent(jTextFieldEnderecoFuncionario)
+                        .addComponent(jLabelCpf)
+                        .addComponent(jTextFieldCpfFuncionario)
+                        .addComponent(jLabelTelefone)
+                        .addComponent(jTextFieldTelefoneFuncionario))
                     .addGroup(CPFLayout.createSequentialGroup()
-                        .addContainerGap()
                         .addGroup(CPFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(CPFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jLabelNomeFuncionario)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 590, Short.MAX_VALUE)
-                                .addComponent(jLabel2)
-                                .addComponent(jTextFieldEnderecoFuncionario)
-                                .addComponent(jLabelCpf)
-                                .addComponent(jTextFieldCpfFuncionario)
-                                .addComponent(jLabelTelefone)
-                                .addComponent(jTextFieldTelefoneFuncionario))
-                            .addGroup(CPFLayout.createSequentialGroup()
-                                .addGroup(CPFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabelSalario)
-                                    .addComponent(jTextFieldSalario, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(44, 44, 44)
-                                .addGroup(CPFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabelCargo)
-                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(CPFLayout.createSequentialGroup()
-                        .addGap(278, 278, 278)
-                        .addComponent(jButtonSalvarFuncionario)))
-                .addContainerGap(26, Short.MAX_VALUE))
+                            .addComponent(jLabelSalario)
+                            .addComponent(jTextFieldSalario, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(44, 44, 44)
+                        .addGroup(CPFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelCargo)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
         CPFLayout.setVerticalGroup(
             CPFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -151,12 +148,26 @@ public class TelaEditarFuncionario extends javax.swing.JFrame {
                 .addGroup(CPFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(CPFLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jTextFieldSalario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(109, 109, 109)
-                .addComponent(jButtonSalvarFuncionario)
-                .addGap(115, 115, 115))
+                        .addComponent(jTextFieldSalario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGap(143, 143, 143))
         );
+
+        jButtonFechar.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jButtonFechar.setText("Fechar");
+        jButtonFechar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonFecharActionPerformed(evt);
+            }
+        });
+
+        jButtonSalvarFuncionario1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jButtonSalvarFuncionario1.setText("Salvar");
+        jButtonSalvarFuncionario1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSalvarFuncionario1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -164,21 +175,43 @@ public class TelaEditarFuncionario extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(CPF, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(CPF, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButtonSalvarFuncionario1)
+                        .addGap(29, 29, 29)
+                        .addComponent(jButtonFechar)
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(CPF, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(5, 5, 5)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButtonFechar)
+                            .addComponent(jButtonSalvarFuncionario1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(CPF, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addContainerGap(363, Short.MAX_VALUE))))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFecharActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jButtonFecharActionPerformed
+
+    private void jButtonSalvarFuncionario1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarFuncionario1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonSalvarFuncionario1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -232,7 +265,8 @@ public class TelaEditarFuncionario extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel CPF;
-    private javax.swing.JButton jButtonSalvarFuncionario;
+    private javax.swing.JButton jButtonFechar;
+    private javax.swing.JButton jButtonSalvarFuncionario1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabelCargo;

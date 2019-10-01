@@ -204,7 +204,7 @@ public class TelaEditarCliente extends javax.swing.JFrame {
             clienteDao.update(cliente);
              JOptionPane.showMessageDialog(null,"Cadastro atualizado com sucesso!");
          } else {
-              JOptionPane.showMessageDialog(null,"existem campos que não podem ficar em braco.");
+              JOptionPane.showMessageDialog(null,"existem campos que não podem ficar em branco.");
          }
     }//GEN-LAST:event_SalvarActionPerformed
 
