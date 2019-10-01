@@ -4,7 +4,7 @@ package br.com.padaria.model;
  *
  * @author luisp
  */
-public class Fornecedor {
+public class Fornecedor extends BaseEntity {
     
     private String razaoSocial;
     
@@ -39,11 +39,13 @@ public class Fornecedor {
         this.cnpj = cnpj;
     }
 
-    public boolean isRecorrente() {
+    public boolean getRecorrente() {
         return recorrente;
     }
 
     public void setRecorrente(boolean recorrente) {
         this.recorrente = recorrente;
     }
+    
+    
 }

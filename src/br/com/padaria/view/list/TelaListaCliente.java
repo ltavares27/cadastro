@@ -92,7 +92,8 @@ public class TelaListaCliente extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTableCliente);
         if (jTableCliente.getColumnModel().getColumnCount() > 0) {
-            jTableCliente.getColumnModel().getColumn(0).setPreferredWidth(1);
+            jTableCliente.getColumnModel().getColumn(0).setMinWidth(50);
+            jTableCliente.getColumnModel().getColumn(0).setMaxWidth(10);
             jTableCliente.getColumnModel().getColumn(1).setPreferredWidth(1);
         }
 

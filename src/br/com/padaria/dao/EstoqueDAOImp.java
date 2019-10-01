@@ -1,8 +1,8 @@
 package br.com.padaria.dao;
 
 import br.com.padaria.connection.ConnectionFactory;
-import br.com.padaria.domain.TipoCartaoFidelidade;
-import br.com.padaria.model.Cliente;
+import br.com.padaria.model.Estoque;
+import br.com.padaria.model.Produto;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,100 +14,86 @@ import java.util.List;
  *
  * @author ltavares
  */
-public class EstoqueDAOImp implements IBaseDAO<Cliente> {
-    
+public class EstoqueDAOImp implements IBaseDAO<Estoque> {
+
     private Connection con = null;
 
     public EstoqueDAOImp() {
         con = ConnectionFactory.getConnetion();
     }
-  
-    @Override
-    public Cliente save(Cliente cliente) {
-        String sql = "INSERT INTO cliente (nome, cpf, telefone, endereco, tipoCartaoFidelidade) VALUES (?, ?, ?, ?, ?)";
-        PreparedStatement stmt = null;        
-        try {
-            stmt = con.prepareStatement(sql);  
-            stmt.setString(1, cliente.getNome());
-            stmt.setString(2, cliente.getCpf());
-            stmt.setString(3, cliente.getTelefone());
-            stmt.setString(4, cliente.getEndereco());
-            stmt.setObject(5, cliente.getTipoCartaoFidelidade());
-            stmt.executeUpdate();            
-        } catch (SQLException ex) {
-            System.err.println("Erro ao tentar gravar dados no banco"+ ex);
-        } finally {
-            ConnectionFactory.closeConnetion(con, stmt);
-        }
-        return cliente;
-    }
 
     @Override
-    public Cliente update(Cliente cliente) {
-        Connection con = ConnectionFactory.getConnetion();
-        String sql = "UPDATE cliente SET nome = ?, cpf = ? , telefone = ?, endereco = ?, tipoCartaoFidelidade = ?  "
-                   + "WHERE id = ?";
-        PreparedStatement stmt = null;        
-        try {
-            stmt = con.prepareStatement(sql);     
-            stmt.setString(1, cliente.getNome());
-            stmt.setString(2, cliente.getCpf());   
-            stmt.setString(3, cliente.getTelefone());                    
-            stmt.setString(4, cliente.getEndereco());
-            stmt.setObject(5, cliente.getTipoCartaoFidelidade());
-            stmt.setInt(6, cliente.getId());
-            stmt.executeUpdate();            
-        } catch (SQLException ex) {
-            System.err.println("Erro ao tentar gravar dados no banco "+ ex);
-        } finally {
-            ConnectionFactory.closeConnetion(con, stmt);
-        }
-        return cliente;
-    }
-
-    @Override
-    public List<Cliente> findAll() {
-       List<Cliente> clientes =  new ArrayList<>();
-       String sql = "SELECT * FROM  cliente";
-       PreparedStatement stmt = null;    
-       ResultSet result = null ;
-        try {
-          stmt = con.prepareStatement(sql);
-          result = stmt.executeQuery();
-          
-            while(result.next()){
-               Cliente cliente = new Cliente();
-               cliente.setId(result.getInt("id"));
-               cliente.setNome(result.getString("nome"));
-               cliente.setCpf(result.getString("cpf"));
-               cliente.setEndereco(result.getString("endereco"));
-               cliente.setTelefone(result.getString("telefone"));
-               
-               Integer tipoId = result.getObject("tipoCartaoFidelidade", Integer.class);
-               if(tipoId != null && tipoId != 0){
-                   cliente.setTipoCartaoFidelidade(TipoCartaoFidelidade.values()[tipoId]);          
-               }          
-               clientes.add(cliente);
-            }  
-         } catch (SQLException ex){
-             System.err.println("Erro ao tentar buscar dados no banco"+ ex);
-         } finally {
-            ConnectionFactory.closeConnetion(con, stmt, result);
-        }
-        return clientes;
-    }
-
-    @Override
-    public boolean delete(Cliente cliente) {
-        String sql = "DELETE FROM cliente WHERE id = ?";
-        PreparedStatement stmt = null;        
+    public Estoque save(Estoque estoque) {
+        String sql = "INSERT INTO estoque (produto_id, unidade) VALUES (?, ?)";
+        PreparedStatement stmt = null;
         try {
             stmt = con.prepareStatement(sql);
-            stmt.setInt(1, cliente.getId());
-            stmt.executeUpdate();     
+            stmt.setInt(1, estoque.getProduto().getId());
+            stmt.setInt(2, estoque.getUnidade());
+            stmt.executeUpdate();
+        } catch (SQLException ex) {
+            System.err.println("Erro ao tentar gravar dados no banco " + ex);
+        } finally {
+            ConnectionFactory.closeConnetion(con, stmt);
+        }
+        return estoque;
+    }
+
+    @Override
+    public Estoque update(Estoque estoque) {
+        Connection con = ConnectionFactory.getConnetion();
+        String sql = "UPDATE estoque SET produto_id = ?, unidade = ? "
+                + "WHERE id = ?";
+        PreparedStatement stmt = null;
+        try {
+            stmt = con.prepareStatement(sql);
+            stmt.setInt(1, estoque.getProduto().getId());
+            stmt.setInt(2, estoque.getUnidade());
+            stmt.executeUpdate();
+        } catch (SQLException ex) {
+            System.err.println("Erro ao tentar gravar dados no banco " + ex);
+        } finally {
+            ConnectionFactory.closeConnetion(con, stmt);
+        }
+        return estoque;
+    }
+
+    @Override
+    public List<Estoque> findAll() {
+        List<Estoque> estoques = new ArrayList<>();
+        String sql = "SELECT * FROM  estoque";
+        PreparedStatement stmt = null;
+        ResultSet result = null;
+        try {
+            stmt = con.prepareStatement(sql);
+            result = stmt.executeQuery();
+
+            while (result.next()) {
+                Estoque estoque = new Estoque();
+                estoque.setId(result.getInt("id"));
+                estoque.setProduto(buildProduto(result.getObject("produto_id", Integer.class)));
+                estoque.setUnidade(result.getInt("unidade"));
+                estoques.add(estoque);
+            }
+        } catch (SQLException ex) {
+            System.err.println("Erro ao tentar buscar dados no banco" + ex);
+        } finally {
+            ConnectionFactory.closeConnetion(con, stmt, result);
+        }
+        return estoques;
+    }
+
+    @Override
+    public boolean delete(Estoque estoque) {
+        String sql = "DELETE FROM estoque WHERE id = ?";
+        PreparedStatement stmt = null;
+        try {
+            stmt = con.prepareStatement(sql);
+            stmt.setInt(1, estoque.getId());
+            stmt.executeUpdate();
             return true;
         } catch (SQLException ex) {
-            System.err.println("Erro ao tentar gravar dados no banco"+ ex);
+            System.err.println("Erro ao tentar gravar dados no banco " + ex);
         } finally {
             ConnectionFactory.closeConnetion(con, stmt);
         }
@@ -115,35 +101,35 @@ public class EstoqueDAOImp implements IBaseDAO<Cliente> {
     }
 
     @Override
-    public Cliente findById(Integer id) {
-       Cliente cliente =  new Cliente();
-       String sql = "SELECT * FROM  cliente WHERE id = ?";
-       PreparedStatement stmt = null;    
-       ResultSet result = null ;
+    public Estoque findById(Integer id) {
+        Estoque estoque = new Estoque();
+        String sql = "SELECT * FROM  estoque WHERE id = ?";
+        PreparedStatement stmt = null;
+        ResultSet result = null;
         try {
-          if(id != null) {  
-          stmt = con.prepareStatement(sql);
-          stmt.setInt(1, id);
-          result = stmt.executeQuery();   
-          
-            while(result.next()){           
-                cliente.setId(result.getInt("id"));
-                cliente.setNome(result.getString("nome"));
-                cliente.setCpf(result.getString("cpf"));
-                cliente.setEndereco(result.getString("endereco"));
-                cliente.setTelefone(result.getString("telefone"));
+            if (id != null) {
+                stmt = con.prepareStatement(sql);
+                stmt.setInt(1, id);
+                result = stmt.executeQuery();
 
-                Integer tipoId = result.getObject("tipoCartaoFidelidade", Integer.class);
-                if(tipoId != null){
-                    cliente.setTipoCartaoFidelidade(TipoCartaoFidelidade.values()[tipoId]);          
-                 }
-               }            
-            }  
-         } catch (SQLException ex){
-             System.err.println("Erro ao tentar buscar dados no banco"+ ex);
-         } finally {
+                while (result.next()) {
+                    estoque.setId(result.getInt("id"));
+                    estoque.setProduto(buildProduto(result.getObject("produto_id", Integer.class)));
+                    estoque.setUnidade(result.getInt("unidade"));
+                }
+            }
+        } catch (SQLException ex) {
+            System.err.println("Erro ao tentar buscar dados no banco " + ex);
+        } finally {
             ConnectionFactory.closeConnetion(con, stmt, result);
         }
-        return cliente;
-    }   
+        return estoque;
+    }
+
+    private Produto buildProduto(Integer idProduto) {
+         if (idProduto != null) {
+            return new ProdutoDAOImp().findById(idProduto);
+        }
+        return null;
+    }
 }

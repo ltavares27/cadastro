@@ -106,6 +106,7 @@ public class CaixaDAOImp implements IBaseDAO<Caixa> {
                Integer IdProduto = result.getObject("produto_id", Integer.class);
                if(IdProduto != null && IdProduto != 0){
                    Produto produto = produtoDAO.findById(IdProduto);
+                   caixa.setProduto(produto);
                }              
                caixa.setQuantidadeProduto(result.getInt("quantidadeProduto"));
                caixa.setSubTotalPorProduto(result.getDouble("subTotalPorProduto"));

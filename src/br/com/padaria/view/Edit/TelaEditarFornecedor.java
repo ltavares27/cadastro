@@ -5,13 +5,29 @@
  */
 package br.com.padaria.view.Edit;
 
-import br.com.padaria.view.detail.*;
+import br.com.padaria.dao.FornecedorDAOImp;
+import br.com.padaria.model.Fornecedor;
+
 
 /**
  *
  * @author ltavares
  */
 public class TelaEditarFornecedor extends javax.swing.JFrame {
+    
+    private FornecedorDAOImp fornecedorDao = new FornecedorDAOImp();
+    
+
+    public void carregaTelaEditarCliente(int idFornecedor) {
+        Fornecedor fornecedor = new Fornecedor();
+        fornecedor = fornecedorDao.findById(idFornecedor);
+        
+        textEndereco.setText(fornecedor.getEndereco());
+        textRazaoSocial.setText(fornecedor.getRazaoSocial());
+        textcnpj.setText(fornecedor.getCnpj());
+        jRadioRecorrente.setSelected(fornecedor.getRecorrente());
+        
+    }
 
     /**
      * Creates new form TelaCadastroFornecedor
@@ -38,7 +54,8 @@ public class TelaEditarFornecedor extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         textEndereco = new java.awt.TextField();
         jRadioRecorrente = new javax.swing.JRadioButton();
-        jButtonSalvarFornecedor = new javax.swing.JButton();
+        jButtonFechar = new javax.swing.JButton();
+        jButtonSalvarFornecedor1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Tela de Detalhes de Fornecedor");
@@ -68,17 +85,12 @@ public class TelaEditarFornecedor extends javax.swing.JFrame {
         jRadioRecorrente.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jRadioRecorrente.setText("Recorrente");
 
-        jButtonSalvarFornecedor.setText("Salvar");
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(252, 252, 252)
-                        .addComponent(jButtonSalvarFornecedor))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel3))
@@ -118,13 +130,15 @@ public class TelaEditarFornecedor extends javax.swing.JFrame {
                 .addComponent(textcnpj, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20)
                 .addComponent(jRadioRecorrente)
-                .addGap(67, 67, 67)
-                .addComponent(jButtonSalvarFornecedor)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(248, Short.MAX_VALUE))
         );
 
         jLabel3.getAccessibleContext().setAccessibleName("RazaoSocial");
         labelCnpj.getAccessibleContext().setAccessibleName("cnpj");
+
+        jButtonFechar.setText("Fechar");
+
+        jButtonSalvarFornecedor1.setText("Salvar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -133,15 +147,33 @@ public class TelaEditarFornecedor extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(2, 2, 2)
                 .addComponent(jLabel2)
-                .addGap(18, 18, 18)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(jButtonSalvarFornecedor1)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButtonFechar)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel2)
-                .addContainerGap(374, Short.MAX_VALUE))
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButtonFechar)
+                            .addComponent(jButtonSalvarFornecedor1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap())
         );
 
         pack();
@@ -202,7 +234,8 @@ public class TelaEditarFornecedor extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonSalvarFornecedor;
+    private javax.swing.JButton jButtonFechar;
+    private javax.swing.JButton jButtonSalvarFornecedor1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

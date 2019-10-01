@@ -5,17 +5,35 @@
  */
 package br.com.padaria.view.list;
 
+import br.com.padaria.dao.FornecedorDAOImp;
+import br.com.padaria.model.Fornecedor;
+import br.com.padaria.view.Edit.TelaEditarFornecedor;
+import br.com.padaria.view.detail.TelaDetalheFornecedor;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
+
 /**
  *
  * @author luisp
  */
-public class TelaListaFornecedores extends javax.swing.JFrame {
+public class TelaListaFornecedores extends javax.swing.JFrame { 
+    
+    private TelaEditarFornecedor telaEditarFornecedor = new TelaEditarFornecedor();
+    
+    private TelaDetalheFornecedor detalheFornecedor = new TelaDetalheFornecedor();
+    
+    private FornecedorDAOImp fornecedorDao = new FornecedorDAOImp();
 
     /**
      * Creates new form TelaCadastroFuncionario
      */
     public TelaListaFornecedores() {
         initComponents();
+        DefaultTableModel modelo = (DefaultTableModel) jTableFornecedores.getModel(); 
+        jTableFornecedores.setRowSorter(new TableRowSorter(modelo));
+        carregaListFornecedores();
     }
 
     /**
@@ -34,11 +52,11 @@ public class TelaListaFornecedores extends javax.swing.JFrame {
         jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
         jLabel1 = new javax.swing.JLabel();
         CPF = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jListFornecedores = new javax.swing.JList();
         jButtonExcluirFornecedor = new javax.swing.JButton();
         jButtonEditarFornecedor = new javax.swing.JButton();
         jButtonDetalhesFornecedor1 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTableFornecedores = new javax.swing.JTable();
 
         jMenu1.setText("jMenu1");
 
@@ -60,14 +78,6 @@ public class TelaListaFornecedores extends javax.swing.JFrame {
         CPF.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Fornecedores", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 12))); // NOI18N
         CPF.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
 
-        jListFornecedores.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jListFornecedores.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "Fornecedor 1", "Fornecedor 2", "Fornecedor 3", "Fornecedor 4", "Fornecedor 5" };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane2.setViewportView(jListFornecedores);
-
         jButtonExcluirFornecedor.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jButtonExcluirFornecedor.setText("Exluir");
         jButtonExcluirFornecedor.addActionListener(new java.awt.event.ActionListener() {
@@ -78,9 +88,40 @@ public class TelaListaFornecedores extends javax.swing.JFrame {
 
         jButtonEditarFornecedor.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jButtonEditarFornecedor.setText("Editar");
+        jButtonEditarFornecedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEditarFornecedorActionPerformed(evt);
+            }
+        });
 
         jButtonDetalhesFornecedor1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jButtonDetalhesFornecedor1.setText("Detalhes");
+
+        jTableFornecedores.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "#", "CNPJ", "Razao Social"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTableFornecedores.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(jTableFornecedores);
+        if (jTableFornecedores.getColumnModel().getColumnCount() > 0) {
+            jTableFornecedores.getColumnModel().getColumn(0).setMinWidth(20);
+            jTableFornecedores.getColumnModel().getColumn(0).setMaxWidth(5);
+            jTableFornecedores.getColumnModel().getColumn(1).setMinWidth(200);
+            jTableFornecedores.getColumnModel().getColumn(1).setMaxWidth(1000);
+            jTableFornecedores.getColumnModel().getColumn(2).setPreferredWidth(5);
+        }
 
         javax.swing.GroupLayout CPFLayout = new javax.swing.GroupLayout(CPF);
         CPF.setLayout(CPFLayout);
@@ -88,15 +129,13 @@ public class TelaListaFornecedores extends javax.swing.JFrame {
             CPFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(CPFLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(CPFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 593, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(CPFLayout.createSequentialGroup()
-                        .addComponent(jButtonEditarFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButtonDetalhesFornecedor1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButtonExcluirFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addComponent(jButtonEditarFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButtonDetalhesFornecedor1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButtonExcluirFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(331, Short.MAX_VALUE))
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         CPFLayout.setVerticalGroup(
             CPFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -106,9 +145,8 @@ public class TelaListaFornecedores extends javax.swing.JFrame {
                     .addComponent(jButtonExcluirFornecedor)
                     .addComponent(jButtonEditarFornecedor)
                     .addComponent(jButtonDetalhesFornecedor1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(340, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -125,7 +163,7 @@ public class TelaListaFornecedores extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addContainerGap(363, Short.MAX_VALUE))
+                .addContainerGap(377, Short.MAX_VALUE))
             .addComponent(CPF, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
@@ -136,8 +174,40 @@ public class TelaListaFornecedores extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonExcluirFornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExcluirFornecedorActionPerformed
-        // TODO add your handling code here:
+          if (jTableFornecedores.getSelectedRow() != -1){
+              if(comfirmaSeDesejaExcluir()){
+              Fornecedor fornecedor = new Fornecedor();
+              fornecedor.setId((Integer) jTableFornecedores.getValueAt(jTableFornecedores.getSelectedRow(), 0));
+              fornecedorDao.delete(fornecedor);
+              carregaListFornecedores();
+              JOptionPane.showMessageDialog(null,"Fornecedor excluido com sucesso.");
+             } else {
+               return;
+             }
+          }else {
+              JOptionPane.showMessageDialog(null,"selecione um Fornecedor para excluir.");
+          }
     }//GEN-LAST:event_jButtonExcluirFornecedorActionPerformed
+
+     private boolean comfirmaSeDesejaExcluir() {
+         int input = JOptionPane.showConfirmDialog(null, "Deseje realmente exluir esse cliente?", "Aviso", JOptionPane.YES_NO_OPTION);        
+         if(input == 0){
+           return  true; 
+         } else {
+           return false;  
+         }  
+    }
+    
+    private void jButtonEditarFornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditarFornecedorActionPerformed
+        if (jTableFornecedores.getSelectedRow() != -1){
+            this.dispose();           
+          
+            telaEditarFornecedor.carregaTelaEditarCliente((int) jTableFornecedores.getValueAt(jTableFornecedores.getSelectedRow(), 0));
+            telaEditarFornecedor.setVisible(true);
+          } else {
+             JOptionPane.showMessageDialog(null,"selecione um Fornecedor para editar.");
+        }
+    }//GEN-LAST:event_jButtonEditarFornecedorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -244,11 +314,28 @@ public class TelaListaFornecedores extends javax.swing.JFrame {
     private javax.swing.JButton jButtonExcluirFornecedor;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JList jListFornecedores;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
-    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTableFornecedores;
     // End of variables declaration//GEN-END:variables
+
+    private void carregaListFornecedores() {
+        DefaultTableModel modelo = (DefaultTableModel) jTableFornecedores.getModel(); 
+        FornecedorDAOImp fornecedorDao = new FornecedorDAOImp();
+        modelo.setNumRows(0);
+        List<Fornecedor> fornecedores = fornecedorDao.findAll();        
+        if(!fornecedores.isEmpty()) {
+          for(Fornecedor f: fornecedores) {
+            modelo.addRow(new Object[]{
+            f.getId(),
+            f.getCnpj(),
+            f.getRazaoSocial(),
+            f.getEndereco()
+            });
+         }
+      }
+    }
 }
