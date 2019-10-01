@@ -5,17 +5,33 @@
  */
 package br.com.padaria.view.detail;
 
+import br.com.padaria.dao.FornecedorDAOImp;
+import br.com.padaria.model.Fornecedor;
+
 /**
  *
  * @author ltavares
  */
 public class TelaDetalheFornecedor extends javax.swing.JFrame {
 
+    
+    FornecedorDAOImp fornecedorDao = new FornecedorDAOImp();
     /**
      * Creates new form TelaCadastroFornecedor
      */
     public TelaDetalheFornecedor() {
         initComponents();
+    }
+    
+     public void carregaTela(int idFornecedor) {
+        Fornecedor fornecedor = new Fornecedor();
+        fornecedor = fornecedorDao.findById(idFornecedor);
+        
+        textEndereco.setText(fornecedor.getEndereco());
+        textRazaoSocial.setText(fornecedor.getRazaoSocial());
+        textcnpj.setText(fornecedor.getCnpj());
+        jRadioRecorrente.setSelected(fornecedor.getRecorrente());
+        
     }
 
     /**
@@ -53,13 +69,11 @@ public class TelaDetalheFornecedor extends javax.swing.JFrame {
         jLabel3.setText("Razão Social");
 
         textRazaoSocial.setEditable(false);
-        textRazaoSocial.setEnabled(false);
 
         labelCnpj.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         labelCnpj.setText("CNPJ");
 
         textcnpj.setEditable(false);
-        textcnpj.setEnabled(false);
         textcnpj.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textcnpjActionPerformed(evt);
@@ -70,7 +84,6 @@ public class TelaDetalheFornecedor extends javax.swing.JFrame {
         jLabel4.setText("Endereço");
 
         textEndereco.setEditable(false);
-        textEndereco.setEnabled(false);
 
         jRadioRecorrente.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jRadioRecorrente.setText("Recorrente");
@@ -128,6 +141,11 @@ public class TelaDetalheFornecedor extends javax.swing.JFrame {
         labelCnpj.getAccessibleContext().setAccessibleName("cnpj");
 
         jButtonFechar.setText("Fechar");
+        jButtonFechar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonFecharActionPerformed(evt);
+            }
+        });
 
         jButtonSalvarFornecedor1.setText("Imprimir");
 
@@ -170,6 +188,10 @@ public class TelaDetalheFornecedor extends javax.swing.JFrame {
     private void textcnpjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textcnpjActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_textcnpjActionPerformed
+
+    private void jButtonFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFecharActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jButtonFecharActionPerformed
 
     /**
     jPanel1and line arguments

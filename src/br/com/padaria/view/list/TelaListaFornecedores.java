@@ -22,7 +22,7 @@ public class TelaListaFornecedores extends javax.swing.JFrame {
     
     private TelaEditarFornecedor telaEditarFornecedor = new TelaEditarFornecedor();
     
-    private TelaDetalheFornecedor detalheFornecedor = new TelaDetalheFornecedor();
+    private TelaDetalheFornecedor telaDetalheFornecedor = new TelaDetalheFornecedor();
     
     private FornecedorDAOImp fornecedorDao = new FornecedorDAOImp();
 
@@ -96,6 +96,11 @@ public class TelaListaFornecedores extends javax.swing.JFrame {
 
         jButtonDetalhesFornecedor1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jButtonDetalhesFornecedor1.setText("Detalhes");
+        jButtonDetalhesFornecedor1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonDetalhesFornecedor1ActionPerformed(evt);
+            }
+        });
 
         jTableFornecedores.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -208,6 +213,17 @@ public class TelaListaFornecedores extends javax.swing.JFrame {
              JOptionPane.showMessageDialog(null,"selecione um Fornecedor para editar.");
         }
     }//GEN-LAST:event_jButtonEditarFornecedorActionPerformed
+
+    private void jButtonDetalhesFornecedor1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDetalhesFornecedor1ActionPerformed
+            if (jTableFornecedores.getSelectedRow() != -1){
+            this.dispose();           
+          
+            telaDetalheFornecedor.carregaTela((int) jTableFornecedores.getValueAt(jTableFornecedores.getSelectedRow(), 0));
+            telaDetalheFornecedor.setVisible(true);
+          } else {
+             JOptionPane.showMessageDialog(null,"selecione um Fornecedor para visualizar detalhes.");
+        }
+    }//GEN-LAST:event_jButtonDetalhesFornecedor1ActionPerformed
 
     /**
      * @param args the command line arguments
