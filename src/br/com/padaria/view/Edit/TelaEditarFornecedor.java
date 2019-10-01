@@ -25,10 +25,7 @@ public class TelaEditarFornecedor extends javax.swing.JFrame {
         textEndereco.setText(fornecedor.getEndereco());
         textRazaoSocial.setText(fornecedor.getRazaoSocial());
         textcnpj.setText(fornecedor.getCnpj());
-        if(fornecedor.getRecorrente()) {
-          jRadioRecorrente.setText("true");  
-        }
-        jRadioRecorrente.setText(null);
+        jRadioRecorrente.setSelected(fornecedor.getRecorrente());
         
     }
 

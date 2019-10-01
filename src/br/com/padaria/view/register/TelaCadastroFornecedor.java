@@ -232,7 +232,7 @@ public class TelaCadastroFornecedor extends javax.swing.JFrame {
       textEndereco.setText(null);
       textEndereco.setText(null);
       textRazaoSocial.setText(null);
-      jRadioRecorrente.setText("0");
+      jRadioRecorrente.setSelected(false);
     }
     
     

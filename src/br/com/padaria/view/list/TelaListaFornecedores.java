@@ -8,6 +8,7 @@ package br.com.padaria.view.list;
 import br.com.padaria.dao.FornecedorDAOImp;
 import br.com.padaria.model.Fornecedor;
 import br.com.padaria.view.Edit.TelaEditarFornecedor;
+import br.com.padaria.view.detail.TelaDetalheFornecedor;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -20,6 +21,10 @@ import javax.swing.table.TableRowSorter;
 public class TelaListaFornecedores extends javax.swing.JFrame { 
     
     private TelaEditarFornecedor telaEditarFornecedor = new TelaEditarFornecedor();
+    
+    private TelaDetalheFornecedor detalheFornecedor = new TelaDetalheFornecedor();
+    
+    private FornecedorDAOImp fornecedorDao = new FornecedorDAOImp();
 
     /**
      * Creates new form TelaCadastroFuncionario
@@ -169,9 +174,30 @@ public class TelaListaFornecedores extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonExcluirFornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExcluirFornecedorActionPerformed
-        // TODO add your handling code here:
+          if (jTableFornecedores.getSelectedRow() != -1){
+              if(comfirmaSeDesejaExcluir()){
+              Fornecedor fornecedor = new Fornecedor();
+              fornecedor.setId((Integer) jTableFornecedores.getValueAt(jTableFornecedores.getSelectedRow(), 0));
+              fornecedorDao.delete(fornecedor);
+              carregaListFornecedores();
+              JOptionPane.showMessageDialog(null,"Fornecedor excluido com sucesso.");
+             } else {
+               return;
+             }
+          }else {
+              JOptionPane.showMessageDialog(null,"selecione um Fornecedor para excluir.");
+          }
     }//GEN-LAST:event_jButtonExcluirFornecedorActionPerformed
 
+     private boolean comfirmaSeDesejaExcluir() {
+         int input = JOptionPane.showConfirmDialog(null, "Deseje realmente exluir esse cliente?", "Aviso", JOptionPane.YES_NO_OPTION);        
+         if(input == 0){
+           return  true; 
+         } else {
+           return false;  
+         }  
+    }
+    
     private void jButtonEditarFornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditarFornecedorActionPerformed
         if (jTableFornecedores.getSelectedRow() != -1){
             this.dispose();           
