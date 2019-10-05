@@ -46,7 +46,7 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
         jLabelTelefone = new javax.swing.JLabel();
         jLabelSalario = new javax.swing.JLabel();
         jLabelCargo = new javax.swing.JLabel();
-        jComboBoxCargo = new javax.swing.JComboBox<>();
+        jComboBoxCargo = new javax.swing.JComboBox<String>();
         jFormattedTextSalario = new javax.swing.JFormattedTextField();
         jFormattedTextCPF = new javax.swing.JFormattedTextField();
         jFormattedTextTelefone = new javax.swing.JFormattedTextField();
@@ -86,7 +86,7 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
         jLabelCargo.setText("Cargo");
 
         jComboBoxCargo.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jComboBoxCargo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione um Cargo", "Gerente", "Padeito", "Vendedor" }));
+        jComboBoxCargo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione um Cargo", "Gerente", "Padeito", "Vendedor" }));
 
         jFormattedTextSalario.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
         jFormattedTextSalario.addActionListener(new java.awt.event.ActionListener() {
@@ -135,7 +135,7 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
                     .addGroup(CPFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(jFormattedTextTelefone, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jFormattedTextCPF, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)))
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
         CPFLayout.setVerticalGroup(
             CPFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -150,21 +150,23 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
                 .addComponent(jTextFieldEnderecoFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabelCpf)
-                .addGap(12, 12, 12)
-                .addComponent(jFormattedTextCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jFormattedTextCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabelTelefone)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jFormattedTextTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(CPFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelSalario)
-                    .addComponent(jLabelCargo))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(CPFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBoxCargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jFormattedTextSalario, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(231, 231, 231))
+                .addComponent(jFormattedTextTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(CPFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(CPFLayout.createSequentialGroup()
+                        .addComponent(jLabelCargo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jComboBoxCargo))
+                    .addGroup(CPFLayout.createSequentialGroup()
+                        .addComponent(jLabelSalario)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jFormattedTextSalario)))
+                .addGap(221, 221, 221))
         );
 
         jButtonFechar.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
@@ -185,17 +187,17 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(CPF, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(2, 2, 2))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(8, 8, 8)
+                        .addGap(14, 14, 14)
                         .addComponent(jButtonSalvarFuncionario)
                         .addGap(18, 18, 18)
                         .addComponent(jButtonFechar)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addContainerGap(466, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(CPF, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -296,12 +298,8 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
        funcionario.setCpf(jFormattedTextCPF.getText());
        funcionario.setEndereco(jTextFieldEnderecoFuncionario.getText());
        funcionario.setTelefone(jFormattedTextTelefone.getText());
-       funcionario.setSalario(Double.valueOf(jFormattedTextSalario.getText()));       
-       funcionario.setCargo(Cargo.valueOf(jComboBoxCargo.getSelectedItem().toString()));
-       
-       
-
-       
+       funcionario.setSalario(Double.valueOf(jFormattedTextSalario.getText()));
+       funcionario.setCargo(jComboBoxCargo.getSelectedIndex());          
        return funcionario;
        
     }
@@ -311,7 +309,7 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
            JOptionPane.showMessageDialog(null,"Informe o nome do Funcionario.");
            return true;
        }
-       if(jTextNomeFuncionario.getText().isEmpty()) {
+       if(jFormattedTextCPF.getText().isEmpty()) {
           JOptionPane.showMessageDialog(null,"Informe o CPF do Funcionario. ");
           return true;
        } 
@@ -331,6 +329,12 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
     }
 
     private void limpparCampos() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       jTextNomeFuncionario.setText(null);
+       jFormattedTextCPF.setText(null);
+       jTextFieldEnderecoFuncionario.setText(null);
+       jFormattedTextTelefone.setText(null);
+       jFormattedTextSalario.setText(null);
+       jComboBoxCargo.setSelectedIndex(0);      
+       
     }
 }

@@ -12,16 +12,16 @@ public class Funcionario extends Pessoa{
     
     private double bonificacao;
     
-    private Cargo cargo;
+    private Integer cargoId;
 
     public Funcionario() {
     }   
 
-    public Funcionario(double salario, double bonificacao, String nome, String cpf, String telefone, String endereco, Cargo cargo) {
+    public Funcionario(double salario, double bonificacao, String nome, String cpf, String telefone, String endereco, Integer cargoId) {
         super(nome, cpf, telefone, endereco);
         this.salario = salario;
         this.bonificacao = bonificacao;
-        this.cargo = cargo;
+        this.cargoId = cargoId;
     }   
   
     public double getSalario() {
@@ -40,12 +40,12 @@ public class Funcionario extends Pessoa{
         this.bonificacao = bonificacao;
     }
 
-    public Cargo getCargo() {
-        return cargo;
+    public Integer getCargo() {
+        return cargoId;
     }
 
-    public void setCargo(Cargo cargo) {
-        this.cargo = cargo;
+    public void setCargo(Integer cargoId) {
+        this.cargoId = cargoId;
     }
     
     

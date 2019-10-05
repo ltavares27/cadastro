@@ -3,12 +3,13 @@ package br.com.padaria.domain;
 /**
  *
  * @author luisp
- */
+ */  
 public enum Cargo {
    
-    VENDEDOR(0, "Vendedor"),
-    PADEIRO(1, "Padeiro"),
-    GERENTE(2, "Gerente");
+    SELECIONE(0, "Selecione"),
+    VENDEDOR(1, "Vendedor"),
+    PADEIRO(2, "Padeiro"),
+    GERENTE(3, "Gerente");
 
     private Cargo(Integer id, String nome) {
         this.id = id;

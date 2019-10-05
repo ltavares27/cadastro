@@ -24,7 +24,7 @@ public class FuncionarioDAOImp implements IBaseDAO<Funcionario> {
   
     @Override
     public Funcionario save(Funcionario funcionario) {
-        String sql = "INSERT INTO funcionario (nome, cpf, telefone, endereco, cargo, salario, bonificacao) VALUES (?, ?, ?, ?, ?,?,:)";
+        String sql = "INSERT INTO funcionario (nome, cpf, telefone, endereco, cargo, salario, bonificacao) VALUES (?, ?, ?, ?, ?,?,?)";
         PreparedStatement stmt = null;        
         try {
             stmt = con.prepareStatement(sql);  
@@ -32,7 +32,9 @@ public class FuncionarioDAOImp implements IBaseDAO<Funcionario> {
             stmt.setString(2, funcionario.getCpf());
             stmt.setString(3, funcionario.getTelefone());
             stmt.setString(4, funcionario.getEndereco());
-            stmt.setObject(5, funcionario.getCargo());
+            
+            
+            stmt.setInt(5, funcionario.getCargo());
             stmt.setDouble(6, funcionario.getSalario());
             stmt.setDouble(7, funcionario.getBonificacao());           
             stmt.executeUpdate();            
@@ -56,7 +58,7 @@ public class FuncionarioDAOImp implements IBaseDAO<Funcionario> {
             stmt.setString(2, funcionario.getCpf());
             stmt.setString(3, funcionario.getTelefone());
             stmt.setString(4, funcionario.getEndereco());
-            stmt.setObject(5, funcionario.getCargo());
+            stmt.setInt(5, funcionario.getCargo());
             stmt.setDouble(6, funcionario.getSalario());
             stmt.setDouble(7, funcionario.getBonificacao());        
             stmt.setInt(8, funcionario.getId());        
@@ -89,7 +91,7 @@ public class FuncionarioDAOImp implements IBaseDAO<Funcionario> {
                
                Integer tipoId = result.getObject("cargo", Integer.class);
                if(tipoId != null){
-                   funcionario.setCargo(Cargo.values()[tipoId]);          
+                   funcionario.setCargo(tipoId);          
                }          
                funcionarios.add(funcionario);
             }  
@@ -139,7 +141,7 @@ public class FuncionarioDAOImp implements IBaseDAO<Funcionario> {
 
                 Integer tipoId = result.getObject("tipoCartaoFidelidade", Integer.class);
                 if(tipoId != null){
-                    funcionario.setCargo(Cargo.values()[tipoId]);          
+                    funcionario.setCargo(tipoId);          
                  }
                }            
             }  

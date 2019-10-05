@@ -31,18 +31,18 @@
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <Component id="CPF" max="32767" attributes="0"/>
-                      <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                       <Component id="jButtonSalvarFuncionario" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jButtonFechar" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="466" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="CPF" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -126,7 +126,7 @@
                           <Component id="jFormattedTextCPF" alignment="0" pref="118" max="32767" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="16" max="32767" attributes="0"/>
+                  <EmptySpace pref="12" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -143,23 +143,26 @@
                   <Component id="jTextFieldEnderecoFuncionario" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="jLabelCpf" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                  <Component id="jFormattedTextCPF" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jFormattedTextCPF" min="-2" pref="26" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabelTelefone" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="jFormattedTextTelefone" min="-2" pref="20" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabelSalario" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabelCargo" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jFormattedTextTelefone" min="-2" pref="26" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Group type="102" attributes="0">
+                          <Component id="jLabelCargo" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jComboBoxCargo" max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="jLabelSalario" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jFormattedTextSalario" max="32767" attributes="0"/>
+                      </Group>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jComboBoxCargo" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jFormattedTextSalario" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="-2" pref="231" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="221" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
