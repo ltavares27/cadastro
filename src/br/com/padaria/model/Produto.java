@@ -9,6 +9,8 @@ import java.util.Date;
  */
 public class Produto extends BaseEntity {
     
+    private String nome;
+    
     private String codigo;
     
     private String apelido;
@@ -23,8 +25,8 @@ public class Produto extends BaseEntity {
     
     private Date dataValidade;
 
-    public Produto(String codigo, String apelido, Fornecedor fornecedor, double precoCusto, double precoFinal, TipoAlimento tipoAlimento, Date dataValidade) {
-        this.codigo = codigo;
+    public Produto(String nome, String codigo, String apelido, Fornecedor fornecedor, double precoCusto, double precoFinal, TipoAlimento tipoAlimento, Date dataValidade) {
+        this.nome = nome;
         this.apelido = apelido;
         this.fornecedor = fornecedor;
         this.precoCusto = precoCusto;
@@ -35,6 +37,14 @@ public class Produto extends BaseEntity {
 
     public Produto() {
     }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }   
 
     public String getCodigo() {
         return codigo;

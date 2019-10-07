@@ -46,7 +46,7 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
         jLabelTelefone = new javax.swing.JLabel();
         jLabelSalario = new javax.swing.JLabel();
         jLabelCargo = new javax.swing.JLabel();
-        jComboBoxCargo = new javax.swing.JComboBox<String>();
+        jComboBoxCargo = new javax.swing.JComboBox<>();
         jFormattedTextSalario = new javax.swing.JFormattedTextField();
         jFormattedTextCPF = new javax.swing.JFormattedTextField();
         jFormattedTextTelefone = new javax.swing.JFormattedTextField();
@@ -86,7 +86,7 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
         jLabelCargo.setText("Cargo");
 
         jComboBoxCargo.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jComboBoxCargo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione um Cargo", "Gerente", "Padeito", "Vendedor" }));
+        jComboBoxCargo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione um Cargo", "Gerente", "Padeito", "Vendedor" }));
 
         jFormattedTextSalario.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
         jFormattedTextSalario.addActionListener(new java.awt.event.ActionListener() {

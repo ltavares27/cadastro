@@ -41,18 +41,19 @@ public class ProdutoDAOImp implements IBaseDAO<Produto> {
   
     @Override
     public Produto save(Produto produto) {
-        String sql = "INSERT INTO produto (codigo, apelido, fornecedor_id, precoCusto, precoFinal, tipoAlimento, dataValidade)"
-                   + " VALUES (?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO produto (nome, codigo, apelido, fornecedor_id, precoCusto, precoFinal, tipoAlimento, dataValidade)"
+                   + " VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         PreparedStatement stmt = null;        
         try {
             stmt = con.prepareStatement(sql);  
-            stmt.setString(1, produto.getCodigo());
-            stmt.setString(2, produto.getApelido());
-            stmt.setObject(3, produto.getFornecedor());
-            stmt.setDouble(4, produto.getPrecoCusto());
-            stmt.setDouble(5, produto.getPrecoFinal());
-            stmt.setObject(6, produto.getTipoAlimento());           
-            stmt.setDate(7, (Date) produto.getDataValidade());           
+            stmt.setString(1, produto.getNome());
+            stmt.setString(2, produto.getCodigo());
+            stmt.setString(3, produto.getApelido());
+            stmt.setObject(4, produto.getFornecedor());
+            stmt.setDouble(5, produto.getPrecoCusto());
+            stmt.setDouble(6, produto.getPrecoFinal());
+            stmt.setObject(7, produto.getTipoAlimento());           
+            stmt.setDate(8, (Date) produto.getDataValidade());           
             stmt.executeUpdate();            
         } catch (SQLException ex) {
             System.err.println("Erro ao tentar gravar dados no banco"+ ex);
@@ -65,20 +66,20 @@ public class ProdutoDAOImp implements IBaseDAO<Produto> {
     @Override
     public Produto update(Produto produto) {
         Connection con = ConnectionFactory.getConnetion();
-        String sql = "UPDATE produto SET codigo = ?, apelido = ?, fornecedor_id = ?, precoCusto = ?,"
+        String sql = "UPDATE produto SET nome = ? ,codigo = ?, apelido = ?, fornecedor_id = ?, precoCusto = ?,"
                    + "precoFinal = ?, tipoAlimento = ?, dataValidade = ?"
                    + "WHERE id = ?";
         PreparedStatement stmt = null;        
         try {
             stmt = con.prepareStatement(sql);     
-            stmt.setString(1, produto.getCodigo());
-            stmt.setString(2, produto.getApelido());
-            stmt.setObject(3, produto.getFornecedor());
-            stmt.setDouble(4, produto.getPrecoCusto());
-            stmt.setDouble(5, produto.getPrecoFinal());
-            stmt.setObject(6, produto.getTipoAlimento());           
-            stmt.setDate(7, (Date) produto.getDataValidade());
-            stmt.setInt(8, produto.getId());
+          stmt.setString(1, produto.getNome());
+            stmt.setString(2, produto.getCodigo());
+            stmt.setString(3, produto.getApelido());
+            stmt.setObject(4, produto.getFornecedor());
+            stmt.setDouble(5, produto.getPrecoCusto());
+            stmt.setDouble(6, produto.getPrecoFinal());
+            stmt.setObject(7, produto.getTipoAlimento());           
+            stmt.setDate(8, (Date) produto.getDataValidade());   
             stmt.executeUpdate();            
         } catch (SQLException ex) {
             System.err.println("Erro ao tentar gravar dados no banco "+ ex);
@@ -101,6 +102,7 @@ public class ProdutoDAOImp implements IBaseDAO<Produto> {
             while(result.next()){
               Produto produto = new Produto();
                produto.setId(result.getInt("id"));
+               produto.setNome(result.getString("nome"));
                produto.setCodigo(result.getString("codigo"));
                produto.setApelido(result.getString("appelido"));
                produto.setPrecoCusto(result.getDouble("precoCusto"));
@@ -152,6 +154,7 @@ public class ProdutoDAOImp implements IBaseDAO<Produto> {
           
             while(result.next()){           
                produto.setId(result.getInt("id"));
+               produto.setNome(result.getString("nome"));
                produto.setCodigo(result.getString("codigo"));
                produto.setApelido(result.getString("appelido"));
                produto.setPrecoCusto(result.getDouble("precoCusto"));
